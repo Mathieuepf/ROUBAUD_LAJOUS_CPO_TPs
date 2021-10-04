@@ -16,29 +16,52 @@ public class TP1_convertisseur_LAJOUS_ROUBAUD {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Téléchargement Scanner
+        //  Téléchargement Scanner
         Scanner sc;
         sc = new Scanner(System.in);
         
-        //Déclaration variables:
+        //  Déclaration variables:
         double reel=0;
+        int convertion=0;
         
-        //  1.
-        System.out.println("Veuillez entrer un réel:");
+        //  Commandes globales
+        System.out.println("Bonjour, saisissez une valeur :");
         reel=sc.nextDouble();
-        System.out.println("Votre réel est "+reel);
+        System.out.println("Saisissez la conversion que vous souhaiter effectuer :"
+                + "1) De Celcius vers Kelvin"
+                + "2) De Kelvin vers Celcius"
+                + "3) De Farenheit vers Celcius"
+                + "4) De Celcius vers Farenheit"
+                + "5) De Kelvin vers Farenheit"
+                + "6) De Farenheit vers Kelvin");
+        convertion=sc.nextInt();
         
-        //  2.
-        System.out.println("La température est de "+FarenheitVersKelvin(reel)+"° kelvin");  
+        if (convertion==1){
+            System.out.println(reel+"degré Celcius est égal à "+CelciusVersKelvin(reel)+"° Kelvin");
+        }
+        if (convertion==2){
+            System.out.println(reel+"degré Kelvin est égal à "+KelvinVersCelcius(reel)+"° Celcius");
+        }
+        if (convertion==3){
+            System.out.println(reel+"degré Farenheit est égal à "+FarenheitVersCelcius(reel)+"° Celcius");
+        }
+        if (convertion==4){
+            System.out.println(reel+"degré Celcius est égal à "+CelciusVersFarenheit(reel)+"° Farenheit");
+        }
+        if (convertion==5){
+            System.out.println(reel+"degré Kelvin est égal à "+KelvinVersFarenheit(reel)+"° Farenheit");
+        }
+        if (convertion==6){
+            System.out.println(reel+"degré Farenheit est égal à "+FarenheitVersKelvin(reel)+"° Kelvin");
+        }
+        
     }
-//  3.
     public static double CelciusVersKelvin(double tempCelcius){
         //Déclaration variables:
         double tempKelvin=0;
         tempKelvin=tempCelcius+273.15;
         return tempKelvin;
     }
-//  4.
     public static double KelvinVersCelcius(double tempKelvin){
         //Déclaration variables:
         double tempCelcius=0;
