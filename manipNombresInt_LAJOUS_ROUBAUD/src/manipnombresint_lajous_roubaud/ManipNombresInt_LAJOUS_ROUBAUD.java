@@ -23,6 +23,8 @@ public class ManipNombresInt_LAJOUS_ROUBAUD {
         int somme;
         int difference;
         int produit;
+        int quotient;
+        int reste;
         
         //Instructions
         System.out.println("entrez vos deux nombres entiers");
@@ -31,8 +33,13 @@ public class ManipNombresInt_LAJOUS_ROUBAUD {
         somme = entier1+entier2;
         difference = entier1-entier2;
         produit = entier1*entier2;
+        
         System.out.println("nombre1 + nombre2 = " + somme + "\nnombre1 - nombre2 = " + difference + "\nnombre1 * nombre2 = " + produit);
         
+        quotient = entier1/entier2;
+        reste = entier1%entier2;
+        
+        System.out.println("la division euclidienne de nombre1 par nombre2 a pour quotient " + quotient + " et pour reste" + reste);
     }
     
 }
