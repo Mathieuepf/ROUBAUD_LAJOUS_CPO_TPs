@@ -39,7 +39,7 @@ public class ManipNombresInt_LAJOUS_ROUBAUD {
         quotient = entier1/entier2;
         reste = entier1%entier2;
         
-        System.out.println("la division euclidienne de nombre1 par nombre2 a pour quotient " + quotient + " et pour reste" + reste);
+        System.out.println("la division euclidienne de nombre1 par nombre2 a pour quotient " + quotient + " et pour reste " + reste);
     }
     
 }
