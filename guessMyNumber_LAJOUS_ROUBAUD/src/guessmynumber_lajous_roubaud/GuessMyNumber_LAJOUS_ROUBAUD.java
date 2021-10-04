@@ -24,6 +24,7 @@ public class GuessMyNumber_LAJOUS_ROUBAUD {
         //variables
         int nombreA = generateurAleat.nextInt(100);
         int essaie = -2;
+        int compteur = 0;
         
         //istructions
         while (nombreA != essaie){
@@ -35,8 +36,9 @@ public class GuessMyNumber_LAJOUS_ROUBAUD {
             if(essaie > nombreA) {
                 System.out.println("trop grand");
             }
+            compteur ++;
         }
-        System.out.println("gagné");
+        System.out.println("gagné avec " + compteur + " tentatives");
     }
     
 }
