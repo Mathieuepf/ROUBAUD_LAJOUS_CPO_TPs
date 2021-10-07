@@ -26,10 +26,11 @@ public class GuessMyNumber_LAJOUS_ROUBAUD {
         int essaie = -2;
         int compteur = 0;
         int niveau = 0;
+        int cauchemar;
         
         //istructions
-        while (niveau != 1 && niveau != 2 && niveau != 3){
-            System.out.println("Choisissez le niveau de difficulté\nniveau 1 : intervale entre 0 et 50 et indications simplifiées\nniveau 2 : intervale entre 0 et 100 et indications standards\nniveau 3 : intervale entre 0 et 100 nombre d'essaies limités à 10 et indications standards");
+        while (niveau != 1 && niveau != 2 && niveau != 3 && niveau != 4){
+            System.out.println("Choisissez le niveau de difficulté\nniveau 1 : intervale entre 0 et 50 et indications simplifiées\nniveau 2 : intervale entre 0 et 100 et indications standards\nniveau 3 : intervale entre 0 et 100 nombre d'essaies limités à 10 et indications standards\nniveau 4 : cauchemar");
             niveau = sc.nextInt();
             if (niveau == 1 || niveau == 2 || niveau == 3){
                 break;
@@ -100,6 +101,33 @@ public class GuessMyNumber_LAJOUS_ROUBAUD {
             else{
                 System.out.println("gagné avec " + compteur + " tentatives");
             }
+        }
+        
+        if(niveau == 4){
+            while (nombreA != essaie){
+            System.out.println("Entrez votre essaie entre 0 et 100");
+            essaie = sc.nextInt();
+            
+            cauchemar = generateurAleat.nextInt(9);
+            
+            if (cauchemar < 3) {
+                if (essaie <= nombreA){
+                    essaie = nombreA+1;
+                }else{
+                    essaie = nombreA-1;
+                }
+            }
+            
+            if(essaie < nombreA){
+                System.out.println("trop petit"); 
+            }
+            if(essaie > nombreA) {
+                System.out.println("trop grand");
+            }
+            compteur ++;
+            }
+            System.out.println("gagné avec " + compteur + " tentatives");
+            
         }
     }
 }
