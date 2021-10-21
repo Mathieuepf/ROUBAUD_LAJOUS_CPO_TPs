@@ -11,36 +11,48 @@ package tp2_convertisseurobjet_lajous_roubaud;
 public class Convertisseur {
     int nbConversions;
     
-    public void Convertisseur(){
-        
+    public Convertisseur () { 
+        nbConversions = 0 ;
     }
     
-    public double CelsiusVersKelvin(double entree){
-        return entree;
+    public double CelsiusVersKelvin(double tempCelcius){
+        double tempKelvin;
+        tempKelvin=tempCelcius+273.15;
+        return tempKelvin;
     }
     
-    public double KelvinVersCelsius(double kelvin){
-        return kelvin;
+    public double KelvinVersCelsius(double tempKelvin){
+        double tempCelcius;
+        tempCelcius=tempKelvin-273.15;
+        return tempCelcius;
     }
     
-    public double FarenheitVersCelsius(double Farenheit){
-        return Farenheit;
+    public double FarenheitVersCelsius(double tempFarenheit){
+        double tempCelcius;
+        tempCelcius=(tempFarenheit-32)*5.0/9.0;
+        return tempCelcius;
     }
     
-    public double CelsuisVersFarenheit(double Celsuis){
-        return Celsuis;
+    public double CelsuisVersFarenheit(double tempCelcius){
+        double tempFarenheit;
+        tempFarenheit=tempCelcius*9.0/5.0+32;
+        return tempFarenheit;
     }
     
-    public double FarenheitVersKelvin(double Far2){
-        return Far2;
+    public double FarenheitVersKelvin(double tempFarenheit){
+        double tempKelvin;
+        tempKelvin=(tempFarenheit+459.67)*5.0/9.0;
+        return tempKelvin;
     }
     
-    public double KelvinVersFarenheit(double Kelvin2){
-        return Kelvin2;
+    public double KelvinVersFarenheit(double tempKelvin){
+        double tempFarenheit;
+        tempFarenheit=tempKelvin*9/5-459.67;
+        return tempFarenheit;
     }
     
     @Override 
     public String toString() {
-        return "lol";
+        return "nb de conversions"+ nbConversions;
     }
 }
