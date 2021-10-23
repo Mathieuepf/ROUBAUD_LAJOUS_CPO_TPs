@@ -20,6 +20,21 @@ public class Personne {
         prenom = Prenom;
     }
     
+    public boolean ajouter_voiture(Voiture voiture_a_ajouter){
+        if(voiture_a_ajouter.proprietaire != null){
+            return false;
+        }else{
+            if(nbVoitures > 2){
+                return false;
+            } else{
+                liste_voitures[nbVoitures] = voiture_a_ajouter;
+                nbVoitures += 1;
+                voiture_a_ajouter.proprietaire = this;
+                return true;
+            }
+        }
+    }
+    
     @Override 
     public String toString() {
         return (prenom+" "+nom);
