@@ -12,7 +12,7 @@ public class Voiture {
     String Modele;
     String Marque;
     int PuissanceCV;
-    Personne Proprietaire;
+    Personne proprietaire;
     
     public Voiture(String modele, String marque, int puissance){
         Modele = modele;
