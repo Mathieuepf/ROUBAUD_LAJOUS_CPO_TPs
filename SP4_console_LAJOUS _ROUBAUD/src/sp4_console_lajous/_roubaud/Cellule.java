@@ -9,5 +9,18 @@ package sp4_console_lajous._roubaud;
  * @author ROUBAUD Mathieu
  */
 public class Cellule {
+    Jeton jetonCourant;
     
+    public Cellule(){
+    
+    }
+    
+    public boolean affecterJeton(Jeton JetonEntree){
+        jetonCourant = JetonEntree;
+        return true;
+    }
+    
+    public String lireCouleurDuJeton(){
+        return jetonCourant.Couleur;
+    }
 }
