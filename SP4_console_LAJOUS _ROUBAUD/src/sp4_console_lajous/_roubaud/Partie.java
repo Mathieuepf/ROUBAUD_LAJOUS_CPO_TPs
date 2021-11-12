@@ -11,5 +11,7 @@ package sp4_console_lajous._roubaud;
 public class Partie {
     Joueur [] ListeJouer = new Joueur[2];
     Joueur joueurCourant;
-    Grille grilleJeu
+    Grille grilleJeu;
+    
+    
 }
