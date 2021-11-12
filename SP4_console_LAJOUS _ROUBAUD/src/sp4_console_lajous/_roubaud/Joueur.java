@@ -13,5 +13,7 @@ public class Joueur {
     String nom;
     String Couleur;
     Jeton ListeJetons[]= new Jeton [21];
+    int nombreJetonsRestants;
+    
     
 }
