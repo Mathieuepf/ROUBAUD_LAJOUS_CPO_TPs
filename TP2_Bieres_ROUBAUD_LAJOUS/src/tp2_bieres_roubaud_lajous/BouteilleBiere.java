@@ -35,7 +35,7 @@ public class BouteilleBiere {
     }
     
     @Override 
-    public String toString() { 
+    public String toString() {
         String chaine_a_retourner; 
         chaine_a_retourner = Nom + " (" + degreAlcool + " degrés) Ouverte ? ";   
         if (ouverte == true ) {
