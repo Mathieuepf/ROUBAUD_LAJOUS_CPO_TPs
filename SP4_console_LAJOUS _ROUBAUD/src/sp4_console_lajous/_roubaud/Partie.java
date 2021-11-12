@@ -29,4 +29,37 @@ public class Partie {
             ListeJoueur[0].Couleur = "rouge";
         }
     }
+    
+    public void initialiserPartie(){
+        
+        //Création de la grille
+        grilleJeu = new Grille();
+        
+        //Création des jetons
+        for(int i=0 ; i<21 ; i++){
+            Jeton JetonJ1 = new Jeton(ListeJoueur[0].Couleur);
+            ListeJoueur[0].ajouterJeton(JetonJ1);
+            Jeton JetonJ2 = new Jeton(ListeJoueur[1].Couleur);
+            ListeJoueur[1].ajouterJeton(JetonJ2);
+        }
+    }
+    
+    public void debuterPartie(){
+        //Boucle infinie qui finit quand un joueur a gagné
+        while(1==1){
+            for(int i=0 ; i<2 ; i++){
+                joueurCourant = ListeJoueur[i];
+                
+                //Récupération de l'entrée du joueur
+                
+                //utilisation d'un jeton dans la case
+                
+                //effet du jeton sur la partie
+                
+                //vérification si partie terminée
+            }
+            
+            //vérification si partie terminée
+        }
+    }
 }
