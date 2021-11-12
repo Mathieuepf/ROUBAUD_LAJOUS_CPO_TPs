@@ -13,5 +13,9 @@ public class Partie {
     Joueur joueurCourant;
     Grille grilleJeu;
     
+    public Partie(Joueur J1, Joueur J2){
+        
+    }
+    
     
 }
