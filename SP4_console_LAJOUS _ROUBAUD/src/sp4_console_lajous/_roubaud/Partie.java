@@ -43,4 +43,23 @@ public class Partie {
             ListeJoueur[1].ajouterJeton(JetonJ2);
         }
     }
+    
+    public void debuterPartie(){
+        //Boucle infinie qui finit quand un joueur a gagné
+        while(1==1){
+            for(int i=0 ; i<2 ; i++){
+                joueurCourant = ListeJoueur[i];
+                
+                //Récupération de l'entrée du joueur
+                
+                //utilisation d'un jeton dans la case
+                
+                //effet du jeton sur la partie
+                
+                //vérification si partie terminée
+            }
+            
+            //vérification si partie terminée
+        }
+    }
 }
