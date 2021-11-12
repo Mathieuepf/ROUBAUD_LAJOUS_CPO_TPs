@@ -4,12 +4,14 @@
  */
 package sp4_console_lajous._roubaud;
 
+import java.util.Random;
+
 /**
  *
  * @author ROUBAUD Mathieu
  */
 public class Partie {
-    Joueur [] ListeJouer = new Joueur[2];
+    Joueur [] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu;
     
@@ -17,5 +19,14 @@ public class Partie {
         
     }
     
-    
+    public void attribuerCouleursAuxJoueurs(){
+        if(new Random().nextInt(2) == 1){
+            ListeJoueur[0].Couleur = "Jaune";
+            ListeJoueur[1].Couleur = "rouge";
+        }
+        else{
+            ListeJoueur[1].Couleur = "Jaune";
+            ListeJoueur[0].Couleur = "rouge";
+        }
+    }
 }
