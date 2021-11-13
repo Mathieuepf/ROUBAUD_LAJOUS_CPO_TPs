@@ -5,6 +5,7 @@
 package sp4_console_lajous._roubaud;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -16,7 +17,8 @@ public class Partie {
     Grille grilleJeu;
     
     public Partie(Joueur J1, Joueur J2){
-        
+        ListeJoueur[0] = J1;
+        ListeJoueur[1] = J2;
     }
     
     public void attribuerCouleursAuxJoueurs(){
@@ -45,21 +47,50 @@ public class Partie {
     }
     
     public void debuterPartie(){
+        
+        //Variables nécessaires au fonctionnement
+        Scanner sc = new Scanner(System.in);
+        int ColonneSaisie;
+        boolean place = false;
+        
         //Boucle infinie qui finit quand un joueur a gagné
         while(1==1){
             for(int i=0 ; i<2 ; i++){
                 joueurCourant = ListeJoueur[i];
                 
-                //Récupération de l'entrée du joueur
+                //Boucle de placement du pion
+                while(place == false){
                 
-                //utilisation d'un jeton dans la case
-                
-                //effet du jeton sur la partie
+                    //Récupération de l'entrée du joueur
+                    System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
+                    ColonneSaisie = sc.nextInt();
+                    while(ColonneSaisie > 7 || ColonneSaisie <= 0){
+                        System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
+                        ColonneSaisie = sc.nextInt();
+                    }
+
+                    //utilisation d'un jeton dans la case
+                    joueurCourant.nombreJetonsRestants -= 1;
+
+                    //effet du jeton sur la partie
+                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie)
+                    if(place == false){
+                        continue;
+                    }else{
+                        break;
+                    }
+                }
                 
                 //vérification si partie terminée
+                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+                    break;
+                }
             }
             
             //vérification si partie terminée
+            if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+                break;
+            }
         }
     }
 }
