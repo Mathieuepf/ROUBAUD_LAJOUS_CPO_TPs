@@ -18,6 +18,16 @@ public class SP4_console_LAJOUS_ROUBAUD {
         
         Tgrille.ajouterJetonDansColonne(Jtest, 1);
         
+        System.out.println(Tgrille.etreRemplie());
+        
+        for(int i=0 ; i<6 ; i++){
+            for(int j=0 ; j<7 ; j++){
+                Jeton Jest2 = new Jeton("jaune");
+                Tgrille.ajouterJetonDansColonne(Jest2, j);
+            }
+        }
+        System.out.println(Tgrille.etreRemplie());
+        
     }
     
 }

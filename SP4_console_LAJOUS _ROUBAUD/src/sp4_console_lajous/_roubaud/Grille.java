@@ -21,16 +21,13 @@ public class Grille {
     }
     
     public boolean ajouterJetonDansColonne(Jeton c, int n){
-        if(CellulesJeu[0][n].jetonCourant!= null){
+        if(CellulesJeu[0][n].jetonCourant== null){
            CellulesJeu[0][n].jetonCourant = c;
            return true;
         }
         else{
             int l=0;
-            CellulesJeu[l][n].jetonCourant=c;
-            while(CellulesJeu[l+1][n].jetonCourant!=null && l<5){
-                CellulesJeu[l+1][n].jetonCourant=CellulesJeu[l][n].jetonCourant;
-                CellulesJeu[l][n].jetonCourant=null;
+            while(CellulesJeu[l][n].jetonCourant!=null && l < 5){
                 l=l+1;
             }
             if(CellulesJeu[l][n].jetonCourant != null){
@@ -46,11 +43,11 @@ public class Grille {
     public boolean etreRemplie(){
         for(int l = 0;l<6;l++){
             for(int c=0;c<7;c++){
-                if(CellulesJeu[l][c]== null){
-                    return true;
+                if(CellulesJeu[l][c].jetonCourant== null){
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 }
