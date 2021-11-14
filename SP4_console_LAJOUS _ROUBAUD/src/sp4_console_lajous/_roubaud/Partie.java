@@ -23,11 +23,11 @@ public class Partie {
     
     public void attribuerCouleursAuxJoueurs(){
         if(new Random().nextInt(2) == 1){
-            ListeJoueur[0].Couleur = "Jaune";
+            ListeJoueur[0].Couleur = "jaune";
             ListeJoueur[1].Couleur = "rouge";
         }
         else{
-            ListeJoueur[1].Couleur = "Jaune";
+            ListeJoueur[1].Couleur = "jaune";
             ListeJoueur[0].Couleur = "rouge";
         }
     }
