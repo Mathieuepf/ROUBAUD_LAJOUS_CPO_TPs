@@ -16,13 +16,13 @@ public class Grille {
         for (int l = 0 ; l<6 ; l++){
             for(int c=0 ; c<7 ; c++){
                 CellulesJeu[l][c]= new Cellule();
-                System.out.println("cellule créée " + l + " " + c);
             }
         }
     }
     
     public boolean ajouterJetonDansColonne(Jeton c, int n){
         if(CellulesJeu[0][n].jetonCourant!= null){
+           CellulesJeu[0][n].jetonCourant = c;
            return true;
         }
         else{
@@ -33,7 +33,13 @@ public class Grille {
                 CellulesJeu[l][n].jetonCourant=null;
                 l=l+1;
             }
-            return false;
+            if(CellulesJeu[l][n].jetonCourant != null){
+                return false;
+            }else{
+                CellulesJeu[l][n].jetonCourant = c;
+                return true;
+            }
+            
         }
     }
     
