@@ -28,7 +28,7 @@ public class Grille {
         else{
             int l=0;
             CellulesJeu[l][n].jetonCourant=c;
-            while(CellulesJeu[l+1][n].jetonCourant!=null || l<5){
+            while(CellulesJeu[l+1][n].jetonCourant!=null && l<5){
                 CellulesJeu[l+1][n].jetonCourant=CellulesJeu[l][n].jetonCourant;
                 CellulesJeu[l][n].jetonCourant=null;
                 l=l+1;
