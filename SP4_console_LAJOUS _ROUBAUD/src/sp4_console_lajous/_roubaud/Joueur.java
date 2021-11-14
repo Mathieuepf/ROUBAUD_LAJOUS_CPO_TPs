@@ -31,8 +31,7 @@ public class Joueur {
             for(int i=0 ; i<SaveList.length ; i++){
                 ListeJetons[i] = SaveList[i];
             }
-            ListeJetons[ListeJetons.length-1]=n;
-            System.out.println("nouveau jeton "+ListeJetons.length);    
+            ListeJetons[ListeJetons.length-1]=n;    
         }
         
     }
