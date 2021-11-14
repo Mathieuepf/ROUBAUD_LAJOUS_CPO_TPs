@@ -12,7 +12,7 @@ public class Cellule {
     Jeton jetonCourant;
     
     public Cellule(){
-    
+        jetonCourant = null;
     }
     
     public boolean affecterJeton(Jeton JetonEntree){
@@ -25,6 +25,10 @@ public class Cellule {
     }
     
     public String lireCouleurDuJeton(){
-        return jetonCourant.Couleur;
+        if(jetonCourant != null){
+            return jetonCourant.Couleur;
+        }else{
+            return("nd");
+        }
     }
 }
