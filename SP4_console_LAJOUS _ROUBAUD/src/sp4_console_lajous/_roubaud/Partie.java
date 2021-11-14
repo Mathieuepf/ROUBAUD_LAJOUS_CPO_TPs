@@ -73,7 +73,7 @@ public class Partie {
                     joueurCourant.nombreJetonsRestants -= 1;
 
                     //effet du jeton sur la partie
-                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie)
+                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie);
                     if(place == false){
                         continue;
                     }else{
@@ -88,7 +88,7 @@ public class Partie {
             }
             
             //vérification si partie terminée
-            if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+            if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
                 break;
             }
         }
