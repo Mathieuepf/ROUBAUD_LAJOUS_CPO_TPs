@@ -12,10 +12,11 @@ package sp4_console_lajous._roubaud;
 public class Grille {
     Cellule CellulesJeu[][] = new Cellule [6][7];
     
-    public void Grille (){
-        for (int l = 0;l<6;l++){
-            for(int c=0;c<7;c++){
+    public Grille (){
+        for (int l = 0 ; l<6 ; l++){
+            for(int c=0 ; c<7 ; c++){
                 CellulesJeu[l][c]= new Cellule();
+                System.out.println("cellule créée " + l + " " + c);
             }
         }
     }

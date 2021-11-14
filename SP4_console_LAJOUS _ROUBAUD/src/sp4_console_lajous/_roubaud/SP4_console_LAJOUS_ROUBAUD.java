@@ -16,7 +16,7 @@ public class SP4_console_LAJOUS_ROUBAUD {
         Grille Tgrille = new Grille();
         Jeton Jtest = new Jeton("rouge");
         
-        Tgrille.ajouterJetonDansColonne(Jtest, 0);
+        Tgrille.ajouterJetonDansColonne(Jtest, 1);
         
     }
     
