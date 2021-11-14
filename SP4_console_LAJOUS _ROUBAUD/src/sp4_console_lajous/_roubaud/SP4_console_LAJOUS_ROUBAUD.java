@@ -13,14 +13,6 @@ public class SP4_console_LAJOUS_ROUBAUD {
 
 
     public static void main(String[] args) {
-        Joueur Jtest = new Joueur("MichMich");
-        Jtest.affecterCouleur("rouge");
-        
-        for(int i=0 ; i<26 ; i++){
-            Jeton Tjeton = new Jeton("rouge");
-            Jtest.ajouterJeton(Tjeton);
-        }
-        
         
     }
     

@@ -22,8 +22,18 @@ public class Joueur {
      Couleur=c;   
     }
     public void ajouterJeton (Jeton n){
-        ListeJetons = new Jeton[ListeJetons.length+1];        
-        ListeJetons[ListeJetons.length-1]=n;
-        System.out.println("nouveau jeton "+ListeJetons.length);
+        if(ListeJetons == null){
+            ListeJetons = new Jeton[1];
+            ListeJetons[0] = n;
+        }else{
+            Jeton [] SaveList = ListeJetons;
+            ListeJetons = new Jeton[ListeJetons.length+1];
+            for(int i=0 ; i<SaveList.length ; i++){
+                ListeJetons[i] = SaveList[i];
+            }
+            ListeJetons[ListeJetons.length-1]=n;
+            System.out.println("nouveau jeton "+ListeJetons.length);    
+        }
+        
     }
 }
