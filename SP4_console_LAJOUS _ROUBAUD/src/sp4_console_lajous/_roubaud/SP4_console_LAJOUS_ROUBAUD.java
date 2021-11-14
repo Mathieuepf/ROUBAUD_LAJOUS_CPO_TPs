@@ -13,20 +13,14 @@ public class SP4_console_LAJOUS_ROUBAUD {
 
 
     public static void main(String[] args) {
-        Grille Tgrille = new Grille();
-        Jeton Jtest = new Jeton("rouge");
+        Joueur Jtest = new Joueur("MichMich");
+        Jtest.affecterCouleur("rouge");
         
-        Tgrille.ajouterJetonDansColonne(Jtest, 1);
-        
-        System.out.println(Tgrille.etreRemplie());
-        
-        for(int i=0 ; i<6 ; i++){
-            for(int j=0 ; j<7 ; j++){
-                Jeton Jest2 = new Jeton("jaune");
-                Tgrille.ajouterJetonDansColonne(Jest2, j);
-            }
+        for(int i=0 ; i<26 ; i++){
+            Jeton Tjeton = new Jeton("rouge");
+            Jtest.ajouterJeton(Tjeton);
         }
-        System.out.println(Tgrille.etreRemplie());
+        
         
     }
     

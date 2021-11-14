@@ -12,17 +12,18 @@ package sp4_console_lajous._roubaud;
 public class Joueur {
     String nom;
     String Couleur;
-    Jeton ListeJetons[];
+    Jeton [] ListeJetons;
     int nombreJetonsRestants;
     
-    public void Joueur (String player){
+    public Joueur (String player){
         nom=player;
     }
     public void affecterCouleur (String c){
      Couleur=c;   
     }
     public void ajouterJeton (Jeton n){
-        ListeJetons = new Jeton[1];
+        ListeJetons = new Jeton[ListeJetons.length+1];        
         ListeJetons[ListeJetons.length-1]=n;
+        System.out.println("nouveau jeton "+ListeJetons.length);
     }
 }
