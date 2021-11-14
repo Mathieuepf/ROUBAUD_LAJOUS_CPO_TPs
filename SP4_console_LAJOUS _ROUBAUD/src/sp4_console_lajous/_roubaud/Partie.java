@@ -64,7 +64,7 @@ public class Partie {
                     //Récupération de l'entrée du joueur
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
-                    while(ColonneSaisie > 7 || ColonneSaisie <= 0){
+                    while(ColonneSaisie > 7 || ColonneSaisie < 1){
                         System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
                         ColonneSaisie = sc.nextInt();
                     }
@@ -73,7 +73,7 @@ public class Partie {
                     joueurCourant.nombreJetonsRestants -= 1;
 
                     //effet du jeton sur la partie
-                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie);
+                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie-1);
                     if(place == false){
                         continue;
                     }else{

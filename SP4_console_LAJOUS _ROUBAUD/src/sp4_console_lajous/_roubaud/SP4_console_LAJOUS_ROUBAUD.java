@@ -13,18 +13,11 @@ public class SP4_console_LAJOUS_ROUBAUD {
 
 
     public static void main(String[] args) {
-        Jeton Jtest;
-        Jtest = new Jeton("jaune");
+        Grille Tgrille = new Grille();
+        Jeton Jtest = new Jeton("rouge");
         
-        Cellule Ctest = new Cellule();
-        System.out.println(Ctest.lireCouleurDuJeton());
-        boolean verif = Ctest.affecterJeton(Jtest);
-        System.out.println(verif);
-        System.out.println(Ctest.lireCouleurDuJeton());
+        Tgrille.ajouterJetonDansColonne(Jtest, 0);
         
-        verif = Ctest.affecterJeton(Jtest);
-        System.out.println(verif);
-        System.out.println(Ctest.lireCouleurDuJeton());
     }
     
 }

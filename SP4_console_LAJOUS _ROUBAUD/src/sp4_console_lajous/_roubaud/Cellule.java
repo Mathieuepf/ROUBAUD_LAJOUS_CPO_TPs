@@ -12,7 +12,7 @@ public class Cellule {
     Jeton jetonCourant;
     
     public Cellule(){
-        jetonCourant = null;
+        
     }
     
     public boolean affecterJeton(Jeton JetonEntree){
