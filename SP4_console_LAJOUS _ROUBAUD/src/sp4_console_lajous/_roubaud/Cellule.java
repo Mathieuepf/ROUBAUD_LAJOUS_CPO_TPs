@@ -13,11 +13,11 @@ import java.util.Random;
 public class Cellule {
     Jeton jetonCourant;
     boolean trouNoir;
+    boolean desintegrateur;
     
     public Cellule(){
         
     }
-    
     public boolean affecterJeton(Jeton JetonEntree){
         if(jetonCourant == null){
             jetonCourant = JetonEntree;
@@ -26,7 +26,6 @@ public class Cellule {
             return false;
         }
     }
-    
     public String lireCouleurDuJeton(){
         if(jetonCourant != null){
             return jetonCourant.Couleur;
@@ -34,7 +33,6 @@ public class Cellule {
             return("nd");
         }
     }
-    
     public boolean placerTrouNoir (){
         if (trouNoir){
             return false;
@@ -44,7 +42,6 @@ public class Cellule {
             return true;
         }
     }
-    
     public boolean presenceTrouNoir (){
         if (trouNoir){
             return true;
@@ -53,7 +50,6 @@ public class Cellule {
             return false;
         }
     }
-    
     public boolean activerTrouNoir (){
         if (trouNoir){
             jetonCourant=null;
@@ -64,8 +60,42 @@ public class Cellule {
             return false;
         }
     }
-    
     public Jeton recupererJeton(){
         return jetonCourant;
+    }
+    public boolean supprimerJeton(){
+        if (jetonCourant!=null){
+            return false;
+        }
+        else{
+            jetonCourant=null;
+            return true;
+        }
+    }
+    public boolean placerDesintegrateur (){
+        if (desintegrateur){
+            return false;
+        }
+        else{
+            desintegrateur=true;   
+            return true;
+        }
+    }
+    public boolean presenceDesintegrateur (){
+        if (desintegrateur){
+            return true;
+        }
+        else{   
+            return false;
+        }
+    }
+    public boolean recupererDesingrateur (){
+        if (desintegrateur){
+            desintegrateur=false;
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
