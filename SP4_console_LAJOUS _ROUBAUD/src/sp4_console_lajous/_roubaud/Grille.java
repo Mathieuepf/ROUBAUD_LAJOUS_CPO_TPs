@@ -162,6 +162,59 @@ public class Grille {
     
     
     
-    
+    public boolean etreGagnantePourJoueur(Joueur J){
         
+        int compteur;
+        //Verification si ligne gagnante
+        
+        for(int i=0 ; i<4 ; i++){
+            for(int l=0 ; l<6 ; l++){
+                compteur = 0;
+                for(int c=i ; c<4+i ; c++){
+                    if(J.Couleur == CellulesJeu[l][c].lireCouleurDuJeton()){
+                        compteur += 1;
+                    }
+                }
+                if(compteur == 4){
+                    return true;
+                }
+            }
+        }
+        
+        //Verification si colonne gagnante
+        for(int i=0 ; i<3 ; i++){
+            for(int c=0 ; c<7 ; c++){
+                compteur = 0;
+                for(int l=i ; l<4+i ; l++){
+                    if(J.Couleur == CellulesJeu[l][c].lireCouleurDuJeton()){
+                        compteur += 1;
+                    }
+                }
+                if(compteur == 4){
+                    return true;
+                }
+            }
+        }
+        
+        //Verification si diagonale montante gagnante
+        for(int l=0 ; l<3 ; l++){
+            for(int c=0 ; c<4 ; c++){
+                if(J.Couleur == CellulesJeu[l][c].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l+1][c+1].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l+2][c+2].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l+3][c+3].lireCouleurDuJeton()){
+                    return true;
+                }
+            }
+        }
+        
+        //Verification si diagonale descendante gagnante
+        for(int l=3 ; l<6 ; l++){
+            for(int c=0 ; c<4 ; c++){
+                if(J.Couleur == CellulesJeu[l][c].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-1][c+1].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-2][c+2].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-3][c+3].lireCouleurDuJeton()){
+                    return true;
+                }
+            }
+        }
+        
+        //cas partie non finie
+        return false;
+    }
 }
