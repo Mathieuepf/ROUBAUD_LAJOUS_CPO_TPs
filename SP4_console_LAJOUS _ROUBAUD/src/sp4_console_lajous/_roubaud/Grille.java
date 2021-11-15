@@ -211,6 +211,8 @@ public class Grille {
                 if(J.Couleur == CellulesJeu[l][c].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-1][c+1].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-2][c+2].lireCouleurDuJeton() && J.Couleur == CellulesJeu[l-3][c+3].lireCouleurDuJeton()){
                     return true;
                 }
+                
+                
             }
         }
         
