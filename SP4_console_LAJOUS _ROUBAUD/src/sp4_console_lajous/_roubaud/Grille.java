@@ -50,4 +50,32 @@ public class Grille {
         }
         return true;
     }
+    
+    public void viderGrille (){
+        for(int l = 0;l<6;l++){
+            for(int c=0;c<7;c++){
+                CellulesJeu[l][c].jetonCourant= null;
+            }
+        }
+    }
+    
+    public void afficherGrilleSurConsole (){
+        for (int l=0; l<6;l++){
+            for (int c=0;c<7;){
+                if (CellulesJeu[l][c].jetonCourant == null){
+                    System.out.print("  O  ");
+                }
+                else if(CellulesJeu[l][c].jetonCourant.Couleur== "Jaune"){
+                    System.out.print("  J  ");
+                }
+                else if(CellulesJeu[l][c].jetonCourant.Couleur== "Rouge"){
+                    System.out.print("  R  ");
+                }
+                else{
+                    System.out.print("  N  ");
+                }
+            }
+            System.out.println("");
+        }
+    }
 }
