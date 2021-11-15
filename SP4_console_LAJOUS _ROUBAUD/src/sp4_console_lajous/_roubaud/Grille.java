@@ -80,9 +80,18 @@ public class Grille {
     }
     
     public boolean celluleOccupee(int l, int c){
-        if 
+        if (CellulesJeu[l][c].jetonCourant != null){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
+    public void lireCouleurDuJeton (int l, int c){
+        System.out.println(CellulesJeu[l][c].jetonCourant.Couleur);
+    }
+
     
     
     
@@ -154,6 +163,5 @@ public class Grille {
     
     
     
-    
-    
+        
 }
