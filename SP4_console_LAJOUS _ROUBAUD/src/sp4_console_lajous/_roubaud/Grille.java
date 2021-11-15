@@ -160,4 +160,19 @@ public class Grille {
         }
     }
     
+    
+    public Jeton recupererJeton(int l, int c){
+        Jeton Jetonrecupere = new Jeton(CellulesJeu[l][c].jetonCourant.Couleur);
+        CellulesJeu[l][c].jetonCourant = null;
+        return(Jetonrecupere);
+    }
+    
+    public void tasserGrille(int c){  
+        for(int i=0 ; i<5 ; i++){
+            if(CellulesJeu[i][c].jetonCourant == null){
+                CellulesJeu[i][c].jetonCourant = CellulesJeu[i+1][c].jetonCourant;
+                CellulesJeu[i+1][c].jetonCourant = null;
+            }
+        }
+    }
 }
