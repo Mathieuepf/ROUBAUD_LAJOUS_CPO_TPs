@@ -4,12 +4,15 @@
  */
 package sp4_console_lajous._roubaud;
 
+import java.util.Random;
+
 /**
  *
  * @author ROUBAUD Mathieu
  */
 public class Cellule {
     Jeton jetonCourant;
+    boolean trouNoir;
     
     public Cellule(){
         
@@ -29,6 +32,36 @@ public class Cellule {
             return jetonCourant.Couleur;
         }else{
             return("nd");
+        }
+    }
+    
+    public boolean placerTrouNoir (){
+        if (trouNoir){
+            return false;
+        }
+        else{
+            trouNoir=true;   
+            return true;
+        }
+    }
+    
+    public boolean presenceTrouNoir (){
+        if (trouNoir){
+            return true;
+        }
+        else{   
+            return false;
+        }
+    }
+    
+    public boolean activerTrouNoir (){
+        if (trouNoir){
+            jetonCourant=null;
+            trouNoir=false; 
+            return true;
+        }
+        else{
+            return false;
         }
     }
 }
