@@ -92,7 +92,6 @@ public class Grille {
         return CellulesJeu[l][c].lireCouleurDuJeton();
     }
 
-  
     public boolean etreGagnantePourJoueur(Joueur J){
         
         int compteur;
@@ -150,4 +149,15 @@ public class Grille {
         //cas partie non finie
         return false;
     }
+    
+    public boolean placerTrouNoir (int l, int c){
+        if (CellulesJeu[l][c].trouNoir){
+            return false;
+        }
+        else{
+            CellulesJeu[l][c].trouNoir=true;
+            return true;
+        }
+    }
+    
 }
