@@ -60,6 +60,9 @@ public class Partie {
                 
                 //Boucle de placement du pion
                 while(place == false){
+                    
+                    //Affichage de la grille
+                    //grilleJeu.afficherGrilleSurConsole();
                 
                     //Récupération de l'entrée du joueur
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
