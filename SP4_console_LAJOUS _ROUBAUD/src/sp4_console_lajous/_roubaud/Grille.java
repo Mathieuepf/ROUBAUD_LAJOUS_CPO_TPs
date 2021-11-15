@@ -88,8 +88,8 @@ public class Grille {
         }
     }
     
-    public void lireCouleurDuJeton (int l, int c){
-        System.out.println(CellulesJeu[l][c].jetonCourant.Couleur);
+    public String lireCouleurDuJeton (int l, int c){
+        return CellulesJeu[l][c].lireCouleurDuJeton();
     }
 
     
