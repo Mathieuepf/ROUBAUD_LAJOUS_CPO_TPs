@@ -55,6 +55,6 @@ public class Cellule {
     }
     
     public boolean activerTrouNoir (){
-        
+        blabla
     }
 }
