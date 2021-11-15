@@ -55,6 +55,13 @@ public class Cellule {
     }
     
     public boolean activerTrouNoir (){
-        blabla
+        if (trouNoir){
+            jetonCourant=null;
+            trouNoir=false; 
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
