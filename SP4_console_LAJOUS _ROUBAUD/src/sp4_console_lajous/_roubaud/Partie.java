@@ -178,14 +178,14 @@ public class Partie {
                 }else{
 
                     for(int i=0 ; i<6 ; i++){
-                        if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
-                            grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
-                            grilleJeu.tasserGrille(ColonneSaisie-1);
-                        }
                         if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
                             System.out.println("Désintégrateur détecté");
                             grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
                             joueurCourant.obtenirDesintegrateur();
+                            grilleJeu.tasserGrille(ColonneSaisie-1);
+                        }
+                        if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
+                            grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
                             grilleJeu.tasserGrille(ColonneSaisie-1);
                         }
                     }
