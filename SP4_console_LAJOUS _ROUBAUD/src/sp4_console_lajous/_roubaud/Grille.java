@@ -56,15 +56,15 @@ public class Grille {
         }
     }
     public void afficherGrilleSurConsole (){
-        for (int l=0; l<6;l++){
+        for (int l=5; l>=0;l--){
             for (int c=0;c<7;c++){
                 if (CellulesJeu[l][c].jetonCourant == null){
                     System.out.print("  O  ");
                 }
-                else if(CellulesJeu[l][c].jetonCourant.Couleur== "Jaune"){
+                else if(CellulesJeu[l][c].jetonCourant.Couleur== "jaune"){
                     System.out.print("  J  ");
                 }
-                else if(CellulesJeu[l][c].jetonCourant.Couleur== "Rouge"){
+                else if(CellulesJeu[l][c].jetonCourant.Couleur== "rouge"){
                     System.out.print("  R  ");
                 }
                 else{

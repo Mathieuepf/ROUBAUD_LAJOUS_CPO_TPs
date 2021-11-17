@@ -26,13 +26,15 @@ public class Joueur {
         if(ListeJetons == null){
             ListeJetons = new Jeton[1];
             ListeJetons[0] = n;
+            nombreJetonsRestants = 1;
         }else{
             Jeton [] SaveList = ListeJetons;
             ListeJetons = new Jeton[ListeJetons.length+1];
             for(int i=0 ; i<SaveList.length ; i++){
                 ListeJetons[i] = SaveList[i];
             }
-            ListeJetons[ListeJetons.length-1]=n;    
+            ListeJetons[ListeJetons.length-1]=n;
+            nombreJetonsRestants += 1;
         }
         
     }
