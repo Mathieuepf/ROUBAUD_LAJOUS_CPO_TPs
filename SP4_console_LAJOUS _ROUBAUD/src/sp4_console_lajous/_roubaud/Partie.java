@@ -52,6 +52,7 @@ public class Partie {
             int ligne = new Random().nextInt(6);
             if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
                 grilleJeu.CellulesJeu[ligne][colonne].activerTrouNoir();
+                System.out.println("Trou noir "+ligne+" "+colonne);
                 i += 1;
             }
         }
@@ -98,13 +99,11 @@ public class Partie {
         
         //Boucle infinie qui finit quand un joueur a gagné
         while(1==1){
-            System.out.println("Je suis là");
             for(int i=0 ; i<2 ; i++){
                 joueurCourant = ListeJoueur[i];
                 
                 //Boucle de placement du pion
                 while(1 == 1){
-                    System.out.println("Je suis ici");
                     
                     //Affichage de la grille
                     grilleJeu.afficherGrilleSurConsole();
@@ -130,7 +129,6 @@ public class Partie {
                     int Reponse = sc.nextInt();
                     if(Reponse == 1){
                         while(1==1){
-                            System.out.println("Je suis patate");
                             System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
                             int Ligne = sc.nextInt();
                             int Colonne = sc.nextInt();
@@ -151,7 +149,6 @@ public class Partie {
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
                     while(ColonneSaisie > 7 || ColonneSaisie < 1){
-                        System.out.println("Je suis sensible");
                         System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
                         ColonneSaisie = sc.nextInt();
                     }

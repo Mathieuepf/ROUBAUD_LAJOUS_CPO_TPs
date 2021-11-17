@@ -58,7 +58,11 @@ public class Grille {
     public void afficherGrilleSurConsole (){
         for (int l=5; l>=0;l--){
             for (int c=0;c<7;c++){
-                if (CellulesJeu[l][c].jetonCourant == null){
+                if(CellulesJeu[l][c].trouNoir){
+                    System.out.print("  N  ");
+                }else if(CellulesJeu[l][c].desintegrateur){
+                    System.out.print("  D  ");
+                }else if (CellulesJeu[l][c].jetonCourant == null){
                     System.out.print("  O  ");
                 }
                 else if(CellulesJeu[l][c].jetonCourant.Couleur== "jaune"){
@@ -67,9 +71,7 @@ public class Grille {
                 else if(CellulesJeu[l][c].jetonCourant.Couleur== "rouge"){
                     System.out.print("  R  ");
                 }
-                else{
-                    System.out.print("  N  ");
-                }
+                
             }
             System.out.println("");
         }
