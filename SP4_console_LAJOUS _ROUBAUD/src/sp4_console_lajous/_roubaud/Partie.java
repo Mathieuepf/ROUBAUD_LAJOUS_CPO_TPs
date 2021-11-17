@@ -89,8 +89,7 @@ public class Partie {
                     }
                 }
             }
-        }    
-        
+        }
     }
     
     public void debuterPartie(){
@@ -141,6 +140,13 @@ public class Partie {
                         System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
                         int Ligne = sc.nextInt();
                         int Colonne = sc.nextInt();
+                        while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7){
+                            System.out.println("Erreur coordonnées incorrectes");
+                            Ligne = sc.nextInt();
+                            Colonne = sc.nextInt();
+                        }
+                        Ligne -= 1;
+                        Colonne -= 1;
                         if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
                             joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
                             joueurCourant.nombreJetonsRestants += 1;
