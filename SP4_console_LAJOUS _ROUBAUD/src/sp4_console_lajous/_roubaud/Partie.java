@@ -30,6 +30,8 @@ public class Partie {
             ListeJoueur[1].Couleur = "jaune";
             ListeJoueur[0].Couleur = "rouge";
         }
+        System.out.println("J1 : " + ListeJoueur[0].Couleur);
+        System.out.println("J2 : " + ListeJoueur[1].Couleur);
     }
     
     public void initialiserPartie(){
@@ -100,91 +102,94 @@ public class Partie {
         
         //Boucle infinie qui finit quand un joueur a gagné
         while(1==1){
-            for(int i=0 ; i<2 ; i++){
-                joueurCourant = ListeJoueur[i];
+            for(int q=0 ; q<2 ; q++){
+                joueurCourant = ListeJoueur[q];
                 
-                //Boucle de placement du pion
-                while(1 == 1){
+                
                     
-                    //Affichage de la grille
-                    grilleJeu.afficherGrilleSurConsole();
-                
-                    //Récupération de l'entrée du joueur
-                    if(joueurCourant.nombreDesintegrateurs != 0){
-                        System.out.println("Voulez-vous jouer un désintégrateur ? (Oui : 1 / Non : 2)");    
-                        int reponse = sc.nextInt();
+                //Affichage de la grille
+                grilleJeu.afficherGrilleSurConsole();
+
+                //Récupération de l'entrée du joueur
+                if(joueurCourant.nombreDesintegrateurs != 0){
+                    System.out.println("Voulez-vous jouer un désintégrateur ? (Oui : 1 / Non : 2)");    
+                    int reponse = sc.nextInt();
+
+                    //Cas joueur joue un désintégrateur
+                    if(reponse == 1){
+                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez désintégrer un pion");
+                        int ligne = sc.nextInt();
+                        int colonne = sc.nextInt();
+                        while(ligne < 1 || ligne > 6 || colonne < 1 || colonne > 7){
+                            System.out.println("Erreur coordonnées incorrectes");
+                            ligne = sc.nextInt();
+                            colonne = sc.nextInt();
+                        }
                         
-                        //Cas joueur joue un désintégrateur
-                        if(reponse == 1){
-                            System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez désintégrer un pion");
-                            int ligne = sc.nextInt();
-                            int colonne = sc.nextInt();
-                            grilleJeu.CellulesJeu[ligne][colonne].supprimerJeton();
-                            grilleJeu.tasserGrille(colonne);
+                        grilleJeu.CellulesJeu[ligne-1][colonne-1].supprimerJeton();
+                        joueurCourant.utiliserDesintegrateur();
+                        grilleJeu.tasserGrille(colonne-1);
+                        continue;
+                    }
+                }
+
+                //Possibiliter de récupérer un jeton
+                System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2)");
+                int Reponse = sc.nextInt();
+                if(Reponse == 1){
+                    while(1==1){
+                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
+                        int Ligne = sc.nextInt();
+                        int Colonne = sc.nextInt();
+                        if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
+                            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
+                            joueurCourant.nombreJetonsRestants += 1;
+                            grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
+                            grilleJeu.tasserGrille(Colonne);
+                            break;
+                        }else{
                             continue;
                         }
                     }
-                    
-                    //Possibiliter de récupérer un jeton
-                    System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2)");
-                    int Reponse = sc.nextInt();
-                    if(Reponse == 1){
-                        while(1==1){
-                            System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
-                            int Ligne = sc.nextInt();
-                            int Colonne = sc.nextInt();
-                            if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
-                                joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
-                                joueurCourant.nombreJetonsRestants += 1;
-                                grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
-                                grilleJeu.tasserGrille(Colonne);
-                                break;
-                            }else{
-                                continue;
-                            }
-                        }
-                        continue;
-                    }
-                    
-                    //Cas de jeu normal
-                    System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
+                    continue;
+                }
+
+                //Cas de jeu normal
+                System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
+                ColonneSaisie = sc.nextInt();
+                while(ColonneSaisie > 7 || ColonneSaisie < 1){
+                    System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
                     ColonneSaisie = sc.nextInt();
-                    while(ColonneSaisie > 7 || ColonneSaisie < 1){
-                        System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
-                        ColonneSaisie = sc.nextInt();
-                    }
+                }
 
-                    //utilisation d'un jeton dans la case
-                    joueurCourant.nombreJetonsRestants -= 1;
+                //utilisation d'un jeton dans la case
+                joueurCourant.nombreJetonsRestants -= 1;
 
-                    //effet du jeton sur la partie
-                    place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie-1);
-                    if(place == false){
-                        continue;
-                    }else{
-                        
-                        for(i=0 ; i<6 ; i++){
-                            if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
-                                System.out.println("trou noir détecté");
-                                grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
-                                grilleJeu.tasserGrille(ColonneSaisie-1);
-                            }
-                            if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
-                                System.out.println("Désintégrateur détecté");
-                                grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
-                                grilleJeu.tasserGrille(ColonneSaisie-1);
-                            }
+                //effet du jeton sur la partie
+                place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , ColonneSaisie-1);
+                if(place == false){
+                    continue;
+                }else{
+
+                    for(int i=0 ; i<6 ; i++){
+                        if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
+                            grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
+                            grilleJeu.tasserGrille(ColonneSaisie-1);
                         }
-                        break;
+                        if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
+                            System.out.println("Désintégrateur détecté");
+                            grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
+                            joueurCourant.obtenirDesintegrateur();
+                            grilleJeu.tasserGrille(ColonneSaisie-1);
+                        }
                     }
                 }
-                
                 //vérification si partie terminée
-                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
                     break;
                 }
             }
-            
+
             //vérification si partie terminée
             if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
                 break;

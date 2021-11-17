@@ -18,7 +18,7 @@ public class SP4_console_LAJOUS_ROUBAUD {
         Joueur J1 = new Joueur("Patrique");
         Joueur J2 = new Joueur("MichMich");
         Partie game = new Partie(J1, J2);
-        
+
         game.attribuerCouleursAuxJoueurs();
         game.initialiserPartie();
         game.debuterPartie();
