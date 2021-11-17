@@ -124,7 +124,7 @@ public class Partie {
                     }
                     
                     //Possibiliter de récupérer un jeton
-                    System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2");
+                    System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2)");
                     int Reponse = sc.nextInt();
                     if(Reponse == 1){
                         while(1==1){
