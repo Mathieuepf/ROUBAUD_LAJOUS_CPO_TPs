@@ -127,19 +127,24 @@ public class Partie {
                     System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2");
                     int Reponse = sc.nextInt();
                     if(Reponse == 1){
-                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion");
-                        int Ligne = sc.nextInt();
-                        int Colonne = sc.nextInt();
-                        if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
-                            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
-                            joueurCourant.nombreJetonsRestants += 1;
-                            grilleJeu.tasserGrille(Colonne);
+                        while(1==1){
+                            System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
+                            int Ligne = sc.nextInt();
+                            int Colonne = sc.nextInt();
+                            if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
+                                joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
+                                joueurCourant.nombreJetonsRestants += 1;
+                                grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
+                                grilleJeu.tasserGrille(Colonne);
+                                break;
+                            }else{
+                                continue;
+                            }
                         }
-                        
-                        
                         continue;
                     }
                     
+                    //Cas de jeu normal
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
                     while(ColonneSaisie > 7 || ColonneSaisie < 1){
