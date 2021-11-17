@@ -46,12 +46,46 @@ public class Partie {
         }
         
         //Placement des trous noirs
-        for(int i=0 ; i<5 ; i++){
-            int Colonne = new Random().nextInt(7);
+        int i = 0;
+        while(i<5){
+            int colonne = new Random().nextInt(7);
             int ligne = new Random().nextInt(6);
-            grilleJeu
+            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
+                grilleJeu.CellulesJeu[ligne][colonne].activerTrouNoir();
+                i += 1;
+            }
         }
-            
+        
+        //Placement désintegrateurs
+        
+        //Placement des desintegrateurs visibles
+        i = 0;
+        while(i<3){
+            int colonne = new Random().nextInt(7);
+            int ligne = new Random().nextInt(6);
+            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false && grilleJeu.CellulesJeu[ligne][colonne].presenceDesintegrateur() == false){
+                grilleJeu.CellulesJeu[ligne][colonne].placerDesintegrateur();
+                i += 1;
+            }
+        }
+        
+        //Placement des desintegrateurs sur trous noirs
+        int T1 = new Random().nextInt(5);
+        int T2 = new Random().nextInt(5);
+        while(T1 == T2){
+            T2 = new Random().nextInt(5);
+        }
+        int compteur = 0;
+        for(i=0 ; i<6 ; i++){
+            for(int j=0 ; j<7 ; j++){
+                if(grilleJeu.CellulesJeu[i][j].presenceTrouNoir()){
+                    compteur += 1;
+                    if(compteur == T1 || compteur == T2){
+                        grilleJeu.CellulesJeu[i][j].placerDesintegrateur();
+                    }
+                }
+            }
+        }    
         
     }
     
