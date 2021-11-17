@@ -103,9 +103,7 @@ public class Partie {
         while(1==1){
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
-                
-                
-                    
+
                 //Affichage de la grille
                 grilleJeu.afficherGrilleSurConsole();
 
@@ -131,33 +129,48 @@ public class Partie {
                         continue;
                     }
                 }
-
-                //Possibiliter de récupérer un jeton
-                System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2)");
-                int Reponse = sc.nextInt();
-                if(Reponse == 1){
-                    while(1==1){
-                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
-                        int Ligne = sc.nextInt();
-                        int Colonne = sc.nextInt();
-                        while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7){
-                            System.out.println("Erreur coordonnées incorrectes");
-                            Ligne = sc.nextInt();
-                            Colonne = sc.nextInt();
-                        }
-                        Ligne -= 1;
-                        Colonne -= 1;
-                        if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
-                            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
-                            joueurCourant.nombreJetonsRestants += 1;
-                            grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
-                            grilleJeu.tasserGrille(Colonne);
+                
+                boolean test = false;
+                for(int i=0 ; i<6 ; i++){
+                    for(int j=0 ; j<6 ; j++){
+                        if(grilleJeu.CellulesJeu[i][j].lireCouleurDuJeton() == joueurCourant.Couleur){
+                            test = true;
                             break;
-                        }else{
-                            continue;
                         }
                     }
-                    continue;
+                    if(test){
+                        break;
+                    }
+                }
+
+                //Possibiliter de récupérer un jeton
+                if(test){
+                    System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2)");
+                    int Reponse = sc.nextInt();
+                    if(Reponse == 1){
+                        while(1==1){
+                            System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
+                            int Ligne = sc.nextInt();
+                            int Colonne = sc.nextInt();
+                            while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7){
+                                System.out.println("Erreur coordonnées incorrectes");
+                                Ligne = sc.nextInt();
+                                Colonne = sc.nextInt();
+                            }
+                            Ligne -= 1;
+                            Colonne -= 1;
+                            if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
+                                joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
+                                joueurCourant.nombreJetonsRestants += 1;
+                                grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
+                                grilleJeu.tasserGrille(Colonne);
+                                break;
+                            }else{
+                                continue;
+                            }
+                        }
+                        continue;
+                    }
                 }
 
                 //Cas de jeu normal
