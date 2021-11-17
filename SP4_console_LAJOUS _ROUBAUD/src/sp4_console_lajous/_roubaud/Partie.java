@@ -162,6 +162,17 @@ public class Partie {
                     if(place == false){
                         continue;
                     }else{
+                        
+                        for(i=0 ; i<6 ; i++){
+                            if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
+                                grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
+                                grilleJeu.tasserGrille(ColonneSaisie-1);
+                            }
+                            if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
+                                grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
+                                grilleJeu.tasserGrille(ColonneSaisie-1);
+                            }
+                        }
                         break;
                     }
                 }
