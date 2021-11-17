@@ -123,6 +123,22 @@ public class Partie {
                         }
                     }
                     
+                    //Possibiliter de récupérer un jeton
+                    System.out.println("Voulez-vous récupérer un jeton ? (Oui : 1 / Non : 2");
+                    int Reponse = sc.nextInt();
+                    if(Reponse == 1){
+                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion");
+                        int Ligne = sc.nextInt();
+                        int Colonne = sc.nextInt();
+                        if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
+                            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
+                            joueurCourant.nombreJetonsRestants += 1;
+                            grilleJeu.tasserGrille(Colonne);
+                        }
+                        
+                        
+                        continue;
+                    }
                     
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
