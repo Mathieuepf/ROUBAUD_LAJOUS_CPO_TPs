@@ -44,6 +44,15 @@ public class Partie {
             Jeton JetonJ2 = new Jeton(ListeJoueur[1].Couleur);
             ListeJoueur[1].ajouterJeton(JetonJ2);
         }
+        
+        //Placement des trous noirs
+        for(int i=0 ; i<5 ; i++){
+            int Colonne = new Random().nextInt(7);
+            int ligne = new Random().nextInt(6);
+            grilleJeu
+        }
+            
+        
     }
     
     public void debuterPartie(){
@@ -85,15 +94,15 @@ public class Partie {
                 }
                 
                 //vérification si partie terminée
-                //if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
-                //    break;
-                //}
+                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+                    break;
+                }
             }
             
             //vérification si partie terminée
-            //if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
-            //    break;
-            //}
+            if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
+                break;
+            }
         }
     }
 }
