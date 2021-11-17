@@ -103,7 +103,11 @@ public class Partie {
         while(1==1){
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
-
+                
+                //vérification si partie terminée
+                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
+                    break;
+                }
                 //Affichage de la grille
                 grilleJeu.afficherGrilleSurConsole();
 
@@ -203,10 +207,7 @@ public class Partie {
                         }
                     }
                 }
-                //vérification si partie terminée
-                if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
-                    break;
-                }
+                
             }
 
             //vérification si partie terminée
