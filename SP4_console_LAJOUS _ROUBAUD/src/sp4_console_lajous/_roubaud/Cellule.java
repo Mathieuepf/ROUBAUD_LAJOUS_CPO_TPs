@@ -43,12 +43,7 @@ public class Cellule {
         }
     }
     public boolean presenceTrouNoir (){
-        if (trouNoir){
-            return true;
-        }
-        else{   
-            return false;
-        }
+        return trouNoir;
     }
     public boolean activerTrouNoir (){
         if (trouNoir){
