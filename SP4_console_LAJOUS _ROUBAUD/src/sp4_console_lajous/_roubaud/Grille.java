@@ -57,7 +57,7 @@ public class Grille {
     }
     public void afficherGrilleSurConsole (){
         for (int l=0; l<6;l++){
-            for (int c=0;c<7;){
+            for (int c=0;c<7;c++){
                 if (CellulesJeu[l][c].jetonCourant == null){
                     System.out.print("  O  ");
                 }
