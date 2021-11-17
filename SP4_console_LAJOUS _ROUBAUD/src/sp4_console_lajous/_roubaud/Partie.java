@@ -105,9 +105,25 @@ public class Partie {
                 while(place == false){
                     
                     //Affichage de la grille
-                    //grilleJeu.afficherGrilleSurConsole();
+                    grilleJeu.afficherGrilleSurConsole();
                 
                     //Récupération de l'entrée du joueur
+                    if(joueurCourant.nombreDesintegrateurs != 0){
+                        System.out.println("Voulez-vous jouer un désintégrateur ? (Oui : 1 / Non : 2)");    
+                        int reponse = sc.nextInt();
+                        
+                        //Cas joueur joue un désintégrateur
+                        if(reponse == 1){
+                            System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez désintégrer un pion");
+                            int ligne = sc.nextInt();
+                            int colonne = sc.nextInt();
+                            grilleJeu.CellulesJeu[ligne][colonne].supprimerJeton();
+                            grilleJeu.tasserGrille(colonne);
+                            continue;
+                        }
+                    }
+                    
+                    
                     System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
                     while(ColonneSaisie > 7 || ColonneSaisie < 1){
