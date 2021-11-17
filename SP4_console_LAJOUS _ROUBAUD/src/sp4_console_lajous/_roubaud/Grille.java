@@ -160,7 +160,15 @@ public class Grille {
             return true;
         }
     }
-    public boolean 
+    public boolean supprimerJeton(int l, int c){
+        if (CellulesJeu[l][c].jetonCourant==null){
+            return false;
+        }
+        else{
+            CellulesJeu[l][c].jetonCourant=null;
+            return true;
+        }
+    }
     
     
     public Jeton recupererJeton(int l, int c){
