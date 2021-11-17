@@ -48,18 +48,20 @@ public class Cellule {
     public boolean activerTrouNoir (){
         if (trouNoir){
             jetonCourant=null;
-            trouNoir=true; 
+            trouNoir=false; 
             return true;
         }
         else{
             return false;
         }
     }
+    
+    
     public Jeton recupererJeton(){
         return jetonCourant;
     }
     public boolean supprimerJeton(){
-        if (jetonCourant!=null){
+        if (jetonCourant==null){
             return false;
         }
         else{
@@ -67,6 +69,8 @@ public class Cellule {
             return true;
         }
     }
+    
+    
     public boolean placerDesintegrateur (){
         if (desintegrateur){
             return false;
