@@ -51,7 +51,8 @@ public class Partie {
             int colonne = new Random().nextInt(7);
             int ligne = new Random().nextInt(6);
             if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
-                grilleJeu.CellulesJeu[ligne][colonne].activerTrouNoir();
+                grilleJeu.CellulesJeu[ligne][colonne].placerTrouNoir();
+                System.out.println(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir());
                 System.out.println("Trou noir "+ligne+" "+colonne);
                 i += 1;
             }
