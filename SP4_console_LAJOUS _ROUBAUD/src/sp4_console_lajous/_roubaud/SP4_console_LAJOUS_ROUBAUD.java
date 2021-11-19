@@ -15,14 +15,18 @@ public class SP4_console_LAJOUS_ROUBAUD {
 
 
     public static void main(String[] args) {
-        Joueur J1 = new Joueur("Patrique");
-        Joueur J2 = new Joueur("MichMich");
+        Scanner sc = new Scanner(System.in);
+        String NJ1 = sc.nextLine();
+        String NJ2 = sc.nextLine();
+        Joueur J1 = new Joueur(NJ1);
+        Joueur J2 = new Joueur(NJ2);
         Partie game = new Partie(J1, J2);
 
         game.attribuerCouleursAuxJoueurs();
         game.initialiserPartie();
         game.debuterPartie();
         System.out.println("Partie fini");
+        
     }
     
 }
