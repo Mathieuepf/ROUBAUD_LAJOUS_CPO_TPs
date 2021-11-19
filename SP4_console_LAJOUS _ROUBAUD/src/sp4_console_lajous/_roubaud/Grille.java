@@ -55,26 +55,44 @@ public class Grille {
             }
         }
     }
+    
+    
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+        
     public void afficherGrilleSurConsole (){
-        for (int l=5; l>=0;l--){
+        
+        for (int l=6; l>=0;l--){
             for (int c=0;c<7;c++){
-                if(CellulesJeu[l][c].trouNoir){
-                    System.out.print("  N  ");
+                if(l==6){
+                    System.out.print(ANSI_PURPLE+"  "+(c+1)+"  "+ANSI_RESET);
+                }else if(CellulesJeu[l][c].trouNoir){
+                    System.out.print(ANSI_BLUE +"  N  "+ANSI_RESET);
                 }else if(CellulesJeu[l][c].desintegrateur){
-                    System.out.print("  D  ");
+                    System.out.print(ANSI_CYAN + "  D  " + ANSI_RESET);
                 }else if (CellulesJeu[l][c].jetonCourant == null){
                     System.out.print("  O  ");
                 }
                 else if(CellulesJeu[l][c].jetonCourant.Couleur== "jaune"){
-                    System.out.print("  J  ");
+                    System.out.print(ANSI_YELLOW + "  J  " + ANSI_RESET);
                 }
                 else if(CellulesJeu[l][c].jetonCourant.Couleur== "rouge"){
-                    System.out.print("  R  ");
+                    System.out.print(ANSI_RED + "  R  " + ANSI_RESET);
                 }
-                
             }
-            System.out.println("");
-        }
+            if(l != 6){
+                System.out.println(ANSI_PURPLE + (l+1) + ANSI_RESET);
+            }else{
+                System.out.println("");
+            }
+        }    
     }
     public boolean celluleOccupee(int l, int c){
         if (CellulesJeu[l][c].jetonCourant != null){
