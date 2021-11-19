@@ -15,12 +15,12 @@ public class Partie {
     Joueur [] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu;
-    
+
     public Partie(Joueur J1, Joueur J2){
         ListeJoueur[0] = J1;
         ListeJoueur[1] = J2;
     }
-    
+
     public void attribuerCouleursAuxJoueurs(){
         if(new Random().nextInt(2) == 1){
             ListeJoueur[0].Couleur = "jaune";
@@ -31,9 +31,9 @@ public class Partie {
             ListeJoueur[0].Couleur = "rouge";
         }
     }
-    
+
     public void initialiserPartie(){
-        
+
         //Création de la grille
         grilleJeu = new Grille();
         
@@ -215,6 +215,14 @@ public class Partie {
             if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
                 break;
             }
+        }
+        
+        if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+            System.out.println("Le joueur " + joueurCourant.nom + " a perdu");
+        }else if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0])){
+            System.out.println("Le joueur " + ListeJoueur[0] + " a gagné");
+        }else if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
+            System.out.println("Le joueur " + ListeJoueur[1] + " a gagné");
         }
     }
 }
