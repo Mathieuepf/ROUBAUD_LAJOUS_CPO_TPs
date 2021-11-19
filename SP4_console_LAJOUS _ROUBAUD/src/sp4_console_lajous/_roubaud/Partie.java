@@ -100,6 +100,10 @@ public class Partie {
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
                 
+                //if(joueurCourant.ListeJetons[0] == null){
+                    
+                //}
+                
                 //vérification si partie terminée
                 if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
                     break;
@@ -179,12 +183,24 @@ public class Partie {
                 }
 
                 //Cas de jeu normal
-                System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
-                ColonneSaisie = sc.nextInt();
-                while(ColonneSaisie > 7 || ColonneSaisie < 1){
-                    System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
+                
+                
+                while(1 == 1){
+                    System.out.println("Veuillez saisir la colonne dans laquelle vous voulez jouer");
                     ColonneSaisie = sc.nextInt();
+                    if(ColonneSaisie > 7 || ColonneSaisie < 1){
+                        System.out.println("Erreur, valeur non comprise entre 0 et 7 veuillez saisir une colonne");
+                        continue;
+                    }
+                    if(grilleJeu.CellulesJeu[5][ColonneSaisie - 1].jetonCourant != null){
+                        System.out.println("Erreur, colonne remplie");
+                        continue;
+                    }
+                    break;
                 }
+            
+                
+                
 
                 //utilisation d'un jeton dans la case
                 joueurCourant.nombreJetonsRestants -= 1;
@@ -208,7 +224,7 @@ public class Partie {
                         }
                     }
                 }
-                
+            
             }
 
             //vérification si partie terminée
