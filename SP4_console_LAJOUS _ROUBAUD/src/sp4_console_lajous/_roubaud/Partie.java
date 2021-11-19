@@ -99,7 +99,7 @@ public class Partie {
         while(1==1){
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
-                
+                System.out.println("C'est à "+joueurCourant.nom+" de jouer, vous avez " + joueurCourant.nombreJetonsRestants + " jetons");
                 
                 
                 //vérification si partie terminée
