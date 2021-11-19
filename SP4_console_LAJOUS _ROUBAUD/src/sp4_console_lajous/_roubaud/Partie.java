@@ -99,7 +99,7 @@ public class Partie {
         while(1==1){
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
-                System.out.println("C'est à "+joueurCourant.nom+" de jouer, vous avez " + joueurCourant.nombreJetonsRestants + " jetons");
+                System.out.println("C'est à "+joueurCourant.nom+" de jouer, vous avez " + joueurCourant.nombreJetonsRestants + " jetons ("+joueurCourant.Couleur+")");
                 
                 
                 //vérification si partie terminée
@@ -143,7 +143,7 @@ public class Partie {
                         System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez désintégrer un pion");
                         int ligne = sc.nextInt();
                         int colonne = sc.nextInt();
-                        while(ligne < 1 || ligne > 6 || colonne < 1 || colonne > 7){
+                        while(ligne < 1 || ligne > 6 || colonne < 1 || colonne > 7 || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant == null || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant.lireCouleur() != joueurCourant.Couleur){
                             System.out.println("Erreur coordonnées incorrectes");
                             ligne = sc.nextInt();
                             colonne = sc.nextInt();
@@ -158,7 +158,7 @@ public class Partie {
                 
                 boolean test = false;
                 for(int i=0 ; i<6 ; i++){
-                    for(int j=0 ; j<6 ; j++){
+                    for(int j=0 ; j<7 ; j++){
                         if(grilleJeu.CellulesJeu[i][j].lireCouleurDuJeton() == joueurCourant.Couleur){
                             test = true;
                             break;
