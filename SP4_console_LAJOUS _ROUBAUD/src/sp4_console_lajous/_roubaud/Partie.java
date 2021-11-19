@@ -30,8 +30,6 @@ public class Partie {
             ListeJoueur[1].Couleur = "jaune";
             ListeJoueur[0].Couleur = "rouge";
         }
-        System.out.println("J1 : " + ListeJoueur[0].Couleur);
-        System.out.println("J2 : " + ListeJoueur[1].Couleur);
     }
     
     public void initialiserPartie(){
@@ -54,8 +52,6 @@ public class Partie {
             int ligne = new Random().nextInt(6);
             if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
                 grilleJeu.CellulesJeu[ligne][colonne].placerTrouNoir();
-                System.out.println(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir());
-                System.out.println("Trou noir "+ligne+" "+colonne);
                 i += 1;
             }
         }
@@ -196,7 +192,6 @@ public class Partie {
 
                     for(int i=0 ; i<6 ; i++){
                         if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
-                            System.out.println("Désintégrateur détecté");
                             grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
                             joueurCourant.obtenirDesintegrateur();
                             grilleJeu.tasserGrille(ColonneSaisie-1);
