@@ -100,9 +100,7 @@ public class Partie {
             for(int q=0 ; q<2 ; q++){
                 joueurCourant = ListeJoueur[q];
                 
-                //if(joueurCourant.ListeJetons[0] == null){
-                    
-                //}
+                
                 
                 //vérification si partie terminée
                 if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) || grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]) || grilleJeu.etreRemplie()){
@@ -110,6 +108,30 @@ public class Partie {
                 }
                 //Affichage de la grille
                 grilleJeu.afficherGrilleSurConsole();
+                
+                //Cas joueurCourant n'a plus de jetons (=récupération obligatoire
+                if(joueurCourant.ListeJetons[0] == null){
+                    System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
+                    int Ligne = sc.nextInt();
+                    int Colonne = sc.nextInt();
+
+                    while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7 || grilleJeu.CellulesJeu[Ligne-1][Colonne-1].jetonCourant == null || grilleJeu.CellulesJeu[Ligne-1][Colonne-1].jetonCourant.lireCouleur() != joueurCourant.Couleur){
+                        System.out.println("Erreur coordonnées incorrectes");
+                        System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
+                        Ligne = sc.nextInt();
+                        Colonne = sc.nextInt();
+                    }
+
+                    Ligne -= 1;
+                    Colonne -= 1;
+
+
+                    joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
+                    joueurCourant.nombreJetonsRestants += 1;
+                    grilleJeu.CellulesJeu[Ligne][Colonne].supprimerJeton();
+                    grilleJeu.tasserGrille(Colonne);
+                    continue;
+                }
 
                 //Récupération de l'entrée du joueur
                 if(joueurCourant.nombreDesintegrateurs != 0){
