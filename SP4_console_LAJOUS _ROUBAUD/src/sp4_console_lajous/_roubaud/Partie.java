@@ -222,9 +222,9 @@ public class Partie {
         if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]) && grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
             System.out.println("Le joueur " + joueurCourant.nom + " a perdu");
         }else if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[0])){
-            System.out.println("Le joueur " + ListeJoueur[0] + " a gagné");
+            System.out.println("Le joueur " + ListeJoueur[0].nom + " a gagné");
         }else if(grilleJeu.etreGagnantePourJoueur(ListeJoueur[1])){
-            System.out.println("Le joueur " + ListeJoueur[1] + " a gagné");
+            System.out.println("Le joueur " + ListeJoueur[1].nom + " a gagné");
         }
     }
 }
