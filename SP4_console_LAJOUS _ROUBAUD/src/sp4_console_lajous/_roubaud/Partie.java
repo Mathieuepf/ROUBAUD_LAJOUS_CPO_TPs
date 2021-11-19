@@ -152,13 +152,18 @@ public class Partie {
                             System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
                             int Ligne = sc.nextInt();
                             int Colonne = sc.nextInt();
-                            while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7){
+                            
+                            while(Ligne < 1 || Ligne > 6 || Colonne < 1 || Colonne > 7 || grilleJeu.CellulesJeu[Ligne-1][Colonne-1].jetonCourant == null || grilleJeu.CellulesJeu[Ligne-1][Colonne-1].jetonCourant.lireCouleur() != joueurCourant.Couleur){
                                 System.out.println("Erreur coordonnées incorrectes");
+                                System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
                                 Ligne = sc.nextInt();
                                 Colonne = sc.nextInt();
                             }
+                            
                             Ligne -= 1;
                             Colonne -= 1;
+                            
+                            
                             if(grilleJeu.CellulesJeu[Ligne][Colonne].jetonCourant.Couleur == joueurCourant.Couleur){
                                 joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = grilleJeu.CellulesJeu[Ligne][Colonne].recupererJeton();
                                 joueurCourant.nombreJetonsRestants += 1;
@@ -195,6 +200,7 @@ public class Partie {
                             grilleJeu.CellulesJeu[i][ColonneSaisie-1].recupererDesingrateur();
                             joueurCourant.obtenirDesintegrateur();
                             grilleJeu.tasserGrille(ColonneSaisie-1);
+                            System.out.println("Vous avez récupéré un désintégrateur !");
                         }
                         if(grilleJeu.CellulesJeu[i][ColonneSaisie-1].presenceTrouNoir() && grilleJeu.CellulesJeu[i][ColonneSaisie-1].jetonCourant != null){
                             grilleJeu.CellulesJeu[i][ColonneSaisie-1].activerTrouNoir();
