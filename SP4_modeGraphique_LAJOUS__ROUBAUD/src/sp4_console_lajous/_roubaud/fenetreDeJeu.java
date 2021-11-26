@@ -4,6 +4,8 @@
  */
 package sp4_console_lajous._roubaud;
 
+import java.util.Random;
+
 /**
  *
  * @author ROUBAUD Mathieu
@@ -41,8 +43,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        nom_joueur_1 = new javax.swing.JTextField();
         nom_joueur_2 = new javax.swing.JTextField();
+        nom_joueur_1 = new javax.swing.JTextField();
         btn_start = new javax.swing.JButton();
         panneau_info_joueur = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
@@ -88,8 +90,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         jLabel2.setText("Nom joueur 1 :");
         panneau_creation_partie.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-        panneau_creation_partie.add(nom_joueur_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 130, -1));
-        panneau_creation_partie.add(nom_joueur_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, -1));
+        panneau_creation_partie.add(nom_joueur_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, 130, -1));
+        panneau_creation_partie.add(nom_joueur_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, -1));
 
         btn_start.setText("Lancer Partie");
         btn_start.addActionListener(new java.awt.event.ActionListener() {
@@ -222,6 +224,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
         panneau_info_joueur.setVisible(true);
         panneau_info_partie.setVisible(true);
+        initialiserPartie();
+        panneau_grille.repaint();
+        btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
 
     /**
@@ -259,6 +264,100 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
+    
+    public void attribuerCouleursAuxJoueurs(){
+        if(new Random().nextInt(2) == 1){
+            ListeJoueur[0].Couleur = "jaune";
+            ListeJoueur[1].Couleur = "rouge";
+        }
+        else{
+            ListeJoueur[1].Couleur = "jaune";
+            ListeJoueur[0].Couleur = "rouge";
+        }
+    }
+
+    public void initialiserPartie(){
+        
+        //Créations des joueurs
+        String nomJoueur1 = nom_joueur_1.getText();
+        Joueur J1 = new Joueur(nomJoueur1);
+        
+        String nomJoueur2 = nom_joueur_2.getText();
+        Joueur J2 = new Joueur(nomJoueur2);
+        
+        ListeJoueur[0] = J1;
+        ListeJoueur[1] = J2;
+        
+        //attribution des couleurs
+        attribuerCouleursAuxJoueurs();
+        
+        //affichage des noms sur l'interface
+        lbl_j1_nom.setText(nomJoueur1);
+        lbl_j2_nom.setText(nomJoueur2);
+        
+        //affichage des couleurs des joueurs sur l'interface
+        lbl_j1_couleur.setText(J1.Couleur);
+        lbl_j2_couleur.setText(J2.Couleur);
+        
+        //affichage du nombre de désintégrateurs
+        lbl_j1_desint.setText(J1.nombreDesintegrateurs+"");
+        lbl_j2_desint.setText(J2.nombreDesintegrateurs+"");
+        
+        //Création des jetons
+        for(int i=0 ; i<21 ; i++){
+            Jeton JetonJ1 = new Jeton(ListeJoueur[0].Couleur);
+            ListeJoueur[0].ajouterJeton(JetonJ1);
+            Jeton JetonJ2 = new Jeton(ListeJoueur[1].Couleur);
+            ListeJoueur[1].ajouterJeton(JetonJ2);
+        }
+        
+        //Placement des trous noirs
+        int i = 0;
+        while(i<5){
+            int colonne = new Random().nextInt(7);
+            int ligne = new Random().nextInt(6);
+            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
+                grilleJeu.CellulesJeu[ligne][colonne].placerTrouNoir();
+                i += 1;
+            }
+        }
+        
+        //Placement désintegrateurs
+        
+        //Placement des desintegrateurs visibles
+        i = 0;
+        while(i<3){
+            int colonne = new Random().nextInt(7);
+            int ligne = new Random().nextInt(6);
+            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false && grilleJeu.CellulesJeu[ligne][colonne].presenceDesintegrateur() == false){
+                grilleJeu.CellulesJeu[ligne][colonne].placerDesintegrateur();
+                i += 1;
+            }
+        }
+        
+        //Placement des desintegrateurs sur trous noirs
+        int T1 = new Random().nextInt(5);
+        int T2 = new Random().nextInt(5);
+        while(T1 == T2){
+            T2 = new Random().nextInt(5);
+        }
+        int compteur = 0;
+        for(i=0 ; i<6 ; i++){
+            for(int j=0 ; j<7 ; j++){
+                if(grilleJeu.CellulesJeu[i][j].presenceTrouNoir()){
+                    compteur += 1;
+                    if(compteur == T1 || compteur == T2){
+                        grilleJeu.CellulesJeu[i][j].placerDesintegrateur();
+                    }
+                }
+            }
+        }
+        
+        //Rajouter Joueur courant aléatoire
+        joueurCourant = ListeJoueur[0];
+        lbl_jcourant.setText(joueurCourant.nom);
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
     private javax.swing.JButton btn_col_1;
