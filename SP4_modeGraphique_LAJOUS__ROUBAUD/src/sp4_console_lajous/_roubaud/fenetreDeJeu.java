@@ -9,12 +9,23 @@ package sp4_console_lajous._roubaud;
  * @author ROUBAUD Mathieu
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
-
+    Joueur [] ListeJoueur = new Joueur[2];
+    Joueur joueurCourant;
+    Grille grilleJeu = new Grille();
     /**
      * Creates new form fenetreDeJeu
      */
     public fenetreDeJeu() {
         initComponents();
+        panneau_info_joueur.setVisible(false);
+        panneau_info_partie.setVisible(false);
+        
+        for(int i=5 ; i>=0 ; i--){
+            for(int j=0 ; j<7 ; j++){
+                CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
+                panneau_grille.add(cellGraph);
+            }
+        }
     }
 
     /**
@@ -81,6 +92,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         panneau_creation_partie.add(nom_joueur_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 130, -1));
 
         btn_start.setText("Lancer Partie");
+        btn_start.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_startActionPerformed(evt);
+            }
+        });
         panneau_creation_partie.add(btn_start, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 140, -1));
 
         getContentPane().add(panneau_creation_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 250, 120));
@@ -202,6 +218,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_col_4ActionPerformed
+
+    private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
+        panneau_info_joueur.setVisible(true);
+        panneau_info_partie.setVisible(true);
+    }//GEN-LAST:event_btn_startActionPerformed
 
     /**
      * @param args the command line arguments

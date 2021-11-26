@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class Partie {
     Joueur [] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
-    Grille grilleJeu;
+    Grille grilleJeu = new Grille();
 
     public Partie(Joueur J1, Joueur J2){
         ListeJoueur[0] = J1;
@@ -33,9 +33,6 @@ public class Partie {
     }
 
     public void initialiserPartie(){
-
-        //Création de la grille
-        grilleJeu = new Grille();
         
         //Création des jetons
         for(int i=0 ; i<21 ; i++){
