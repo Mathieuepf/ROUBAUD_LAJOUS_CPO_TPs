@@ -11,9 +11,11 @@ import java.util.Random;
  * @author ROUBAUD Mathieu
  */
 public class fenetreDeJeu extends javax.swing.JFrame {
-    Joueur [] ListeJoueur = new Joueur[2];
+
+    Joueur[] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
     Grille grilleJeu = new Grille();
+
     /**
      * Creates new form fenetreDeJeu
      */
@@ -21,9 +23,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         initComponents();
         panneau_info_joueur.setVisible(false);
         panneau_info_partie.setVisible(false);
-        
-        for(int i=5 ; i>=0 ; i--){
-            for(int j=0 ; j<7 ; j++){
+
+        for (int i = 5; i >= 0; i--) {
+            for (int j = 0; j < 7; j++) {
                 CelluleGraphique cellGraph = new CelluleGraphique(grilleJeu.CellulesJeu[i][j]);
                 panneau_grille.add(cellGraph);
             }
@@ -232,16 +234,25 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         joueurSuivant();
         jouerDansColonne(2);
+        if (grilleJeu.celluleOccupee(5, 2)) {
+            btn_col_2.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
         joueurSuivant();
         jouerDansColonne(1);
+        if (grilleJeu.celluleOccupee(5, 1)) {
+            btn_col_1.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         joueurSuivant();
         jouerDansColonne(4);
+        if (grilleJeu.celluleOccupee(5, 4)) {
+            btn_col_4.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
@@ -255,65 +266,91 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         joueurSuivant();
         jouerDansColonne(0);
+        if (grilleJeu.celluleOccupee(5, 0)) {
+            btn_col_0.setEnabled(false);
+        }
+
+
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         joueurSuivant();
         jouerDansColonne(3);
+        if (grilleJeu.celluleOccupee(5, 3)) {
+            btn_col_3.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         joueurSuivant();
         jouerDansColonne(5);
+        if (grilleJeu.celluleOccupee(5, 5)) {
+            btn_col_5.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         joueurSuivant();
         jouerDansColonne(6);
+        if (grilleJeu.celluleOccupee(5, 6)) {
+            btn_col_6.setEnabled(false);
+        }
     }//GEN-LAST:event_btn_col_6ActionPerformed
-    
-    public boolean jouerDansColonne(int indiceColonne){
+
+    public boolean jouerDansColonne(int indiceColonne) {
         //utilisation d'un jeton dans la case
         joueurCourant.nombreJetonsRestants -= 1;
-        
+
         //effet du jeton sur la partie
-        boolean place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , indiceColonne);
-        System.out.println(place + " couleur jeton : "+joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants].Couleur);
-         
-        if(place){
-            
+        boolean place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants], indiceColonne);
+        
+        boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
+        boolean vJ2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
+        
+        if(vJ1 && vJ2){
+            joueurSuivant();
+            message.setText("Victoire de "+joueurCourant.nom+" faute de jeu du joueur adverse");
+        }else if(vJ1){
+            message.setText("Victoire de "+ListeJoueur[0].nom);
+        }else if(vJ2){
+            message.setText("Victoire de "+ListeJoueur[1].nom);
+        }
+
+        if (place) {
+
             //Verification activation trou noir et désintégrateur
-            for(int i=0 ; i<6 ; i++){
-                if(grilleJeu.CellulesJeu[i][indiceColonne].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null){
+            for (int i = 0; i < 6; i++) {
+                if (grilleJeu.CellulesJeu[i][indiceColonne].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null) {
                     grilleJeu.CellulesJeu[i][indiceColonne].recupererDesingrateur();
                     joueurCourant.obtenirDesintegrateur();
+                    lbl_j1_desint.setText(ListeJoueur[0].nombreDesintegrateurs+"");
+                    lbl_j2_desint.setText(ListeJoueur[1].nombreDesintegrateurs+"");
                     grilleJeu.tasserGrille(indiceColonne);
                 }
-                if(grilleJeu.CellulesJeu[i][indiceColonne].presenceTrouNoir() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null){
+                if (grilleJeu.CellulesJeu[i][indiceColonne].presenceTrouNoir() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null) {
                     grilleJeu.CellulesJeu[i][indiceColonne].activerTrouNoir();
                     grilleJeu.tasserGrille(indiceColonne);
                 }
             }
             joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = null;
-        }
-        
-        //cas colonne remplie
-        else{
+        } //cas colonne remplie
+        else {
             joueurCourant.nombreJetonsRestants += 1;
         }
-        
+
         panneau_grille.repaint();
-        return place;   
+        return place;
     }
-    
-    public void joueurSuivant(){
-        if(joueurCourant == ListeJoueur[0]){
+
+    public void joueurSuivant() {
+        if (joueurCourant == ListeJoueur[0]) {
             joueurCourant = ListeJoueur[1];
-        }else{
+        } else {
             joueurCourant = ListeJoueur[0];
         }
         lbl_jcourant.setText(joueurCourant.nom);
     }
+
     /**
      * @param args the command line arguments
      */
@@ -349,99 +386,96 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         });
     }
 
-    
-    public void attribuerCouleursAuxJoueurs(){
-        if(new Random().nextInt(2) == 1){
+    public void attribuerCouleursAuxJoueurs() {
+        if (new Random().nextInt(2) == 1) {
             ListeJoueur[0].Couleur = "jaune";
             ListeJoueur[1].Couleur = "rouge";
-        }
-        else{
+        } else {
             ListeJoueur[1].Couleur = "jaune";
             ListeJoueur[0].Couleur = "rouge";
         }
     }
 
-    public void initialiserPartie(){
-        
+    public void initialiserPartie() {
+
         //Créations des joueurs
         String nomJoueur1 = nom_joueur_1.getText();
         Joueur J1 = new Joueur(nomJoueur1);
-        
+
         String nomJoueur2 = nom_joueur_2.getText();
         Joueur J2 = new Joueur(nomJoueur2);
-        
+
         ListeJoueur[0] = J1;
         ListeJoueur[1] = J2;
-        
+
         //attribution des couleurs
         attribuerCouleursAuxJoueurs();
-        
+
         //affichage des noms sur l'interface
         lbl_j1_nom.setText(nomJoueur1);
         lbl_j2_nom.setText(nomJoueur2);
-        
+
         //affichage des couleurs des joueurs sur l'interface
         lbl_j1_couleur.setText(J1.Couleur);
         lbl_j2_couleur.setText(J2.Couleur);
-        
+
         //affichage du nombre de désintégrateurs
-        lbl_j1_desint.setText(J1.nombreDesintegrateurs+"");
-        lbl_j2_desint.setText(J2.nombreDesintegrateurs+"");
-        
+        lbl_j1_desint.setText(J1.nombreDesintegrateurs + "");
+        lbl_j2_desint.setText(J2.nombreDesintegrateurs + "");
+
         //Création des jetons
-        for(int i=0 ; i<21 ; i++){
+        for (int i = 0; i < 21; i++) {
             Jeton JetonJ1 = new Jeton(ListeJoueur[0].Couleur);
             ListeJoueur[0].ajouterJeton(JetonJ1);
             Jeton JetonJ2 = new Jeton(ListeJoueur[1].Couleur);
             ListeJoueur[1].ajouterJeton(JetonJ2);
         }
-        
+
         //Placement des trous noirs
         int i = 0;
-        while(i<5){
+        while (i < 5) {
             int colonne = new Random().nextInt(7);
             int ligne = new Random().nextInt(6);
-            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false){
+            if (grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false) {
                 grilleJeu.CellulesJeu[ligne][colonne].placerTrouNoir();
                 i += 1;
             }
         }
-        
+
         //Placement désintegrateurs
-        
         //Placement des desintegrateurs visibles
         i = 0;
-        while(i<3){
+        while (i < 3) {
             int colonne = new Random().nextInt(7);
             int ligne = new Random().nextInt(6);
-            if(grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false && grilleJeu.CellulesJeu[ligne][colonne].presenceDesintegrateur() == false){
+            if (grilleJeu.CellulesJeu[ligne][colonne].presenceTrouNoir() == false && grilleJeu.CellulesJeu[ligne][colonne].presenceDesintegrateur() == false) {
                 grilleJeu.CellulesJeu[ligne][colonne].placerDesintegrateur();
                 i += 1;
             }
         }
-        
+
         //Placement des desintegrateurs sur trous noirs
         int T1 = new Random().nextInt(5);
         int T2 = new Random().nextInt(5);
-        while(T1 == T2){
+        while (T1 == T2) {
             T2 = new Random().nextInt(5);
         }
         int compteur = 0;
-        for(i=0 ; i<6 ; i++){
-            for(int j=0 ; j<7 ; j++){
-                if(grilleJeu.CellulesJeu[i][j].presenceTrouNoir()){
+        for (i = 0; i < 6; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (grilleJeu.CellulesJeu[i][j].presenceTrouNoir()) {
                     compteur += 1;
-                    if(compteur == T1 || compteur == T2){
+                    if (compteur == T1 || compteur == T2) {
                         grilleJeu.CellulesJeu[i][j].placerDesintegrateur();
                     }
                 }
             }
         }
-        
+
         //Rajouter Joueur courant aléatoire
         joueurCourant = ListeJoueur[0];
         lbl_jcourant.setText(joueurCourant.nom);
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
