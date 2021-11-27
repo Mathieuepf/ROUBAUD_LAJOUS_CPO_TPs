@@ -35,13 +35,14 @@ public class CelluleGraphique extends JButton{
         }else if(celluleAssociee.presenceDesintegrateur()){
             setIcon(img_desint);
         }else{
-            switch(couleur_jeton){
-                case "rouge":
-                    setIcon(img_rouge);
-                case "jaune":
-                    setIcon(img_jaune);
-                case "nd":
-                    setIcon(img_vide); // on attribue l'image celluleVide.png
+            if(couleur_jeton == "rouge"){
+                setIcon(img_rouge);
+            }
+            else if(couleur_jeton == "jaune"){
+                setIcon(img_jaune);
+            }
+            else{
+                setIcon(img_vide);
             }
         }
     }
