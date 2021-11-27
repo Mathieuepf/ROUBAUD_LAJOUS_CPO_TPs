@@ -171,9 +171,19 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(panneau_info_partie, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 500, 250, 130));
 
         btn_col_5.setText("6");
+        btn_col_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 10, -1, -1));
 
         btn_col_0.setText("1");
+        btn_col_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_0ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
 
         btn_col_1.setText("2");
@@ -193,6 +203,11 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btn_col_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 10, -1, -1));
 
         btn_col_3.setText("4");
+        btn_col_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(398, 10, -1, -1));
 
         btn_col_4.setText("5");
@@ -204,21 +219,29 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         getContentPane().add(btn_col_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 10, -1, -1));
 
         btn_col_6.setText("7");
+        btn_col_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_col_6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_col_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(686, 10, -1, -1));
 
         setBounds(0, 0, 1044, 692);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
-        // TODO add your handling code here:
+        joueurSuivant();
+        jouerDansColonne(2);
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
-        // TODO add your handling code here:
+        joueurSuivant();
+        jouerDansColonne(1);
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
-        // TODO add your handling code here:
+        joueurSuivant();
+        jouerDansColonne(4);
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
@@ -229,6 +252,68 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         btn_start.setEnabled(false);
     }//GEN-LAST:event_btn_startActionPerformed
 
+    private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
+        joueurSuivant();
+        jouerDansColonne(0);
+    }//GEN-LAST:event_btn_col_0ActionPerformed
+
+    private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
+        joueurSuivant();
+        jouerDansColonne(3);
+    }//GEN-LAST:event_btn_col_3ActionPerformed
+
+    private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
+        joueurSuivant();
+        jouerDansColonne(5);
+    }//GEN-LAST:event_btn_col_5ActionPerformed
+
+    private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
+        joueurSuivant();
+        jouerDansColonne(6);
+    }//GEN-LAST:event_btn_col_6ActionPerformed
+    
+    public boolean jouerDansColonne(int indiceColonne){
+        //utilisation d'un jeton dans la case
+        joueurCourant.nombreJetonsRestants -= 1;
+        
+        //effet du jeton sur la partie
+        boolean place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] , indiceColonne);
+        System.out.println(place + " couleur jeton : "+joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants].Couleur);
+         
+        if(place){
+            
+            //Verification activation trou noir et désintégrateur
+            for(int i=0 ; i<6 ; i++){
+                if(grilleJeu.CellulesJeu[i][indiceColonne].presenceDesintegrateur() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null){
+                    grilleJeu.CellulesJeu[i][indiceColonne].recupererDesingrateur();
+                    joueurCourant.obtenirDesintegrateur();
+                    grilleJeu.tasserGrille(indiceColonne);
+                }
+                if(grilleJeu.CellulesJeu[i][indiceColonne].presenceTrouNoir() && grilleJeu.CellulesJeu[i][indiceColonne].jetonCourant != null){
+                    grilleJeu.CellulesJeu[i][indiceColonne].activerTrouNoir();
+                    grilleJeu.tasserGrille(indiceColonne);
+                }
+            }
+            joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = null;
+        }
+        
+        //cas colonne remplie
+        else{
+            joueurCourant.nombreJetonsRestants += 1;
+        }
+        
+        panneau_grille.repaint();
+        return place;   
+    }
+    
+    public void joueurSuivant(){
+        if(joueurCourant == ListeJoueur[0]){
+            joueurCourant = ListeJoueur[1];
+        }else{
+            joueurCourant = ListeJoueur[0];
+        }
+        lbl_jcourant.setText(joueurCourant.nom);
+    }
     /**
      * @param args the command line arguments
      */

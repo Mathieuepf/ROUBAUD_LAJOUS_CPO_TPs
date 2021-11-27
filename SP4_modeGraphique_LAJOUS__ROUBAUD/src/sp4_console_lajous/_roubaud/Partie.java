@@ -106,7 +106,7 @@ public class Partie {
                 //Affichage de la grille
                 grilleJeu.afficherGrilleSurConsole();
                 
-                //Cas joueurCourant n'a plus de jetons (=récupération obligatoire
+                //Cas joueurCourant n'a plus de jetons (=récupération obligatoire)
                 if(joueurCourant.ListeJetons[0] == null){
                     System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez retirer un pion (de votre couleur uniquement)");
                     int Ligne = sc.nextInt();
