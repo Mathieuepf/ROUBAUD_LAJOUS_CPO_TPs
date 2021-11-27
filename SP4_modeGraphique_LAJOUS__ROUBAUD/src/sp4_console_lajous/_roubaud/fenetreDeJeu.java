@@ -47,22 +47,25 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             } else {
                                 return;
                             }
-                            for (int i = 0; i < 7; i++) {
-                                grilleJeu.tasserGrille(i);
-                            }
-                            panneau_grille.repaint();
-                            boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
-                            boolean vJ2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
-
-                            if (vJ1 && vJ2) {
-                                joueurSuivant();
-                                message.setText("Victoire de " + joueurCourant.nom + " faute de jeu du joueur adverse");
-                            } else if (vJ1) {
-                                message.setText("Victoire de " + ListeJoueur[0].nom);
-                            } else if (vJ2) {
-                                message.setText("Victoire de " + ListeJoueur[1].nom);
-                            }
                         }
+                        for (int i = 0; i < 7; i++) {
+                            grilleJeu.tasserGrille(i);
+                            System.out.println("grille tassé en " + i);
+                        }
+
+                        panneau_grille.repaint();
+                        boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
+                        boolean vJ2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
+
+                        if (vJ1 && vJ2) {
+                            joueurSuivant();
+                            message.setText("Victoire de " + joueurCourant.nom + " faute de jeu du joueur adverse");
+                        } else if (vJ1) {
+                            message.setText("Victoire de " + ListeJoueur[0].nom);
+                        } else if (vJ2) {
+                            message.setText("Victoire de " + ListeJoueur[1].nom);
+                        }
+
                     }
                 });
                 panneau_grille.add(cellGraph);
