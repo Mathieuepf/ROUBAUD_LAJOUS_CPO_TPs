@@ -273,24 +273,24 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
-        joueurSuivant();
         jouerDansColonne(2);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 2)) {
             btn_col_2.setEnabled(false);
         }
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
-        joueurSuivant();
         jouerDansColonne(1);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 1)) {
             btn_col_1.setEnabled(false);
         }
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
-        joueurSuivant();
         jouerDansColonne(4);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 4)) {
             btn_col_4.setEnabled(false);
         }
@@ -305,8 +305,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_startActionPerformed
 
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
-        joueurSuivant();
         jouerDansColonne(0);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 0)) {
             btn_col_0.setEnabled(false);
         }
@@ -315,24 +315,24 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_col_0ActionPerformed
 
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
-        joueurSuivant();
         jouerDansColonne(3);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 3)) {
             btn_col_3.setEnabled(false);
         }
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
-        joueurSuivant();
         jouerDansColonne(5);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 5)) {
             btn_col_5.setEnabled(false);
         }
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
-        joueurSuivant();
         jouerDansColonne(6);
+        joueurSuivant();
         if (grilleJeu.celluleOccupee(5, 6)) {
             btn_col_6.setEnabled(false);
         }
