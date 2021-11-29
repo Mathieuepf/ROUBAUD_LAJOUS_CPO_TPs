@@ -40,9 +40,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             joueurSuivant();
                         } else {
                             if (joueurCourant.nombreDesintegrateurs > 0) {
-                                message.setText("Le joueur" + joueurCourant.nom + "désintégre un jeton");
+                                message.setText("Le joueur " + joueurCourant.nom + " désintégre un jeton");
                                 c.supprimerJeton();
-                                joueurCourant.nombreDesintegrateurs--;
+                                joueurCourant.nombreDesintegrateurs -= 1;
                                 joueurSuivant();
                             } else {
                                 return;
@@ -50,8 +50,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                         }
                         for (int i = 0; i < 7; i++) {
                             grilleJeu.tasserGrille(i);
-                            System.out.println("grille tassé en " + i);
                         }
+                        VerifColonnesRemplies();
 
                         panneau_grille.repaint();
                         boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
@@ -275,25 +275,19 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_2ActionPerformed
         jouerDansColonne(2);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 2)) {
-            btn_col_2.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_2ActionPerformed
 
     private void btn_col_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_1ActionPerformed
         jouerDansColonne(1);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 1)) {
-            btn_col_1.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_1ActionPerformed
 
     private void btn_col_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_4ActionPerformed
         jouerDansColonne(4);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 4)) {
-            btn_col_4.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_4ActionPerformed
 
     private void btn_startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_startActionPerformed
@@ -307,9 +301,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_0ActionPerformed
         jouerDansColonne(0);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 0)) {
-            btn_col_0.setEnabled(false);
-        }
+        VerifColonnesRemplies();
 
 
     }//GEN-LAST:event_btn_col_0ActionPerformed
@@ -317,25 +309,19 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     private void btn_col_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_3ActionPerformed
         jouerDansColonne(3);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 3)) {
-            btn_col_3.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_3ActionPerformed
 
     private void btn_col_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_5ActionPerformed
         jouerDansColonne(5);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 5)) {
-            btn_col_5.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_5ActionPerformed
 
     private void btn_col_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_col_6ActionPerformed
         jouerDansColonne(6);
         joueurSuivant();
-        if (grilleJeu.celluleOccupee(5, 6)) {
-            btn_col_6.setEnabled(false);
-        }
+        VerifColonnesRemplies();
     }//GEN-LAST:event_btn_col_6ActionPerformed
 
     public boolean jouerDansColonne(int indiceColonne) {
@@ -378,7 +364,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         else {
             joueurCourant.nombreJetonsRestants += 1;
         }
-
+        
+        VerifColonnesRemplies();
         panneau_grille.repaint();
         return place;
     }
@@ -517,6 +504,52 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         joueurCourant = ListeJoueur[0];
         lbl_jcourant.setText(joueurCourant.nom);
 
+    }
+    
+    public void VerifColonnesRemplies(){
+        if (grilleJeu.celluleOccupee(5, 0)) {
+            btn_col_0.setEnabled(false);
+        }else{
+            btn_col_0.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 1)) {
+            btn_col_1.setEnabled(false);
+        }else{
+            btn_col_1.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 2)) {
+            btn_col_2.setEnabled(false);
+        }else{
+            btn_col_2.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 3)) {
+            btn_col_3.setEnabled(false);
+        }else{
+            btn_col_3.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 4)) {
+            btn_col_4.setEnabled(false);
+        }else{
+            btn_col_4.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 5)) {
+            btn_col_5.setEnabled(false);
+        }else{
+            btn_col_5.setEnabled(true);
+        }
+        
+        if (grilleJeu.celluleOccupee(5, 6)) {
+            btn_col_6.setEnabled(false);
+        }else{
+            btn_col_6.setEnabled(true);
+        }
+        
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
