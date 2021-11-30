@@ -565,7 +565,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
     }
     
     public void verrouillageGrille(){
-        System.out.println("on est rentré");
         btn_col_0.setEnabled(false);
         btn_col_1.setEnabled(false);
         btn_col_2.setEnabled(false);
