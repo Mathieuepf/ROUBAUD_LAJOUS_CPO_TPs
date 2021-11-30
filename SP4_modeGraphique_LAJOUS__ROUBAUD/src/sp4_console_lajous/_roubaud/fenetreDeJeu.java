@@ -43,6 +43,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             if (joueurCourant.nombreDesintegrateurs > 0) {
                                 message.setText("Le joueur " + joueurCourant.nom + " désintégre un jeton");
                                 c.supprimerJeton();
+                                System.out.println("Mais que se passe-t-il ici ?");
                                 joueurCourant.nombreDesintegrateurs -= 1;
                                 joueurSuivant();
                             } else {
