@@ -45,6 +45,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                                 c.supprimerJeton();
                                 System.out.println("Mais que se passe-t-il ici ?");
                                 joueurCourant.nombreDesintegrateurs -= 1;
+                                lbl_j1_desint.setText(ListeJoueur[0].nombreDesintegrateurs + "");
+                                lbl_j2_desint.setText(ListeJoueur[1].nombreDesintegrateurs + "");
                                 joueurSuivant();
                             } else {
                                 return;
