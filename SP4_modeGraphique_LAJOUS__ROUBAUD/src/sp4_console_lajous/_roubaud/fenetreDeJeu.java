@@ -63,10 +63,13 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                         if (vJ1 && vJ2) {
                             joueurSuivant();
                             message.setText("Victoire de " + joueurCourant.nom + " faute de jeu du joueur adverse");
+                            verrouillageGrille();
                         } else if (vJ1) {
                             message.setText("Victoire de " + ListeJoueur[0].nom);
+                            verrouillageGrille();
                         } else if (vJ2) {
                             message.setText("Victoire de " + ListeJoueur[1].nom);
+                            verrouillageGrille();
                         }
 
                     }
@@ -340,10 +343,13 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         if (vJ1 && vJ2) {
             joueurSuivant();
             message.setText("Victoire de " + joueurCourant.nom + " faute de jeu du joueur adverse");
+            verrouillageGrille();
         } else if (vJ1) {
             message.setText("Victoire de " + ListeJoueur[0].nom);
+            verrouillageGrille();
         } else if (vJ2) {
             message.setText("Victoire de " + ListeJoueur[1].nom);
+            verrouillageGrille();
         }
 
         if (place) {
@@ -506,6 +512,10 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         //Rajouter Joueur courant aléatoire
         joueurCourant = ListeJoueur[0];
+        int ran = new Random().nextInt(2);
+        if(ran == 1){
+            joueurSuivant();
+        }
         lbl_jcourant.setText(joueurCourant.nom);
 
     }
@@ -552,8 +562,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         }else{
             btn_col_6.setEnabled(true);
         }
-        
-        
+    }
+    
+    public void verrouillageGrille(){
+        System.out.println("on est rentré");
+        btn_col_0.setEnabled(false);
+        btn_col_1.setEnabled(false);
+        btn_col_2.setEnabled(false);
+        btn_col_3.setEnabled(false);
+        btn_col_4.setEnabled(false);
+        btn_col_5.setEnabled(false);
+        btn_col_6.setEnabled(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_col_0;
