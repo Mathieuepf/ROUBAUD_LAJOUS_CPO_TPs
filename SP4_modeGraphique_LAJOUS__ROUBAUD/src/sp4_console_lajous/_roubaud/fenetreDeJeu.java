@@ -36,8 +36,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             message.setText("Le joueur " + joueurCourant.nom + " récupère un de ses jetons");
                             Jeton jrecup = c.recupererJeton();
                             joueurCourant.ajouterJeton(jrecup);
-                            joueurCourant.nombreJetonsRestants += 1;
+                            System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
                             c.supprimerJeton();
+                            
                             joueurSuivant();
                         } else {
                             if (joueurCourant.nombreDesintegrateurs > 0) {
@@ -47,6 +48,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                                 joueurCourant.nombreDesintegrateurs -= 1;
                                 lbl_j1_desint.setText(ListeJoueur[0].nombreDesintegrateurs + "");
                                 lbl_j2_desint.setText(ListeJoueur[1].nombreDesintegrateurs + "");
+                                System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
                                 joueurSuivant();
                             } else {
                                 return;
@@ -366,22 +368,22 @@ public class fenetreDeJeu extends javax.swing.JFrame {
             }
             joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants] = null;
         } //cas colonne remplie
-        else {
+        /*else {
             joueurCourant.nombreJetonsRestants += 1;
-        }
+        }*/
         
         VerifColonnesRemplies();
         panneau_grille.repaint();
         
-        System.out.println("nb jetons : "+joueurCourant.nombreJetonsRestants);
-        for(int i=0 ; i<joueurCourant.ListeJetons.length ; i++){
+        System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
+        /*for(int i=0 ; i<joueurCourant.ListeJetons.length ; i++){
             if(joueurCourant.ListeJetons[i] == null){
                 System.out.print(i+"NULL ");
             }
             else{
                 System.out.print(i+"P ");
             }
-        }
+        }*/
         
         return place;
     }

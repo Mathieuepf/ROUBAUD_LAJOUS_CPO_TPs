@@ -20,6 +20,10 @@ public class Grille {
         }
     }
     public boolean ajouterJetonDansColonne(Jeton c, int n){
+        if(c == null){
+            System.out.println("pas de jeton en entrée");
+            return false;
+        }
         if(CellulesJeu[0][n].jetonCourant== null){
            CellulesJeu[0][n].jetonCourant = c;
            return true;
