@@ -22,22 +22,22 @@ public class Joueur {
     public void affecterCouleur (String c){
      Couleur=c;   
     }
-    public void ajouterJeton (Jeton n){
-        if(ListeJetons == null){
+    public void ajouterJeton(Jeton n) {
+        if (ListeJetons == null) {
             ListeJetons = new Jeton[1];
             ListeJetons[0] = n;
             nombreJetonsRestants = 1;
-        }else{
-            Jeton [] SaveList = ListeJetons;
-            ListeJetons = new Jeton[ListeJetons.length+1];
-            for(int i=0 ; i<SaveList.length ; i++){
+        } else {
+            Jeton[] SaveList = ListeJetons;
+            ListeJetons = new Jeton[nombreJetonsRestants + 1];
+            for (int i = 0; i < nombreJetonsRestants; i++) {
                 ListeJetons[i] = SaveList[i];
             }
-            ListeJetons[ListeJetons.length-1]=n;
+            ListeJetons[nombreJetonsRestants] = n;
             nombreJetonsRestants += 1;
         }
-        
     }
+        
     public void obtenirDesintegrateur(){
         nombreDesintegrateurs=nombreDesintegrateurs+1;
     }

@@ -14,11 +14,17 @@ import java.util.Scanner;
 public class Partie {
     Joueur [] ListeJoueur = new Joueur[2];
     Joueur joueurCourant;
-    Grille grilleJeu;
+    Grille grilleJeu = new Grille();
 
     public Partie(Joueur J1, Joueur J2){
-        ListeJoueur[0] = J1;
-        ListeJoueur[1] = J2;
+        if(new Random().nextInt(2) == 1){
+            ListeJoueur[0] = J1;
+            ListeJoueur[1] = J2;
+        }
+        else{
+            ListeJoueur[1] = J1;
+            ListeJoueur[0] = J2;
+        }
     }
 
     public void attribuerCouleursAuxJoueurs(){
@@ -34,8 +40,8 @@ public class Partie {
 
     public void initialiserPartie(){
 
-        //Création de la grille
-        grilleJeu = new Grille();
+        //réinitialisation de la grille
+        grilleJeu.viderGrille();
         
         //Création des jetons
         for(int i=0 ; i<21 ; i++){
@@ -143,7 +149,7 @@ public class Partie {
                         System.out.println("Saisissez la ligne puis la colonne dans laquelle vous voulez désintégrer un pion");
                         int ligne = sc.nextInt();
                         int colonne = sc.nextInt();
-                        while(ligne < 1 || ligne > 6 || colonne < 1 || colonne > 7 || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant == null || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant.lireCouleur() != joueurCourant.Couleur){
+                        while(ligne < 1 || ligne > 6 || colonne < 1 || colonne > 7 || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant == null || grilleJeu.CellulesJeu[ligne-1][colonne-1].jetonCourant.lireCouleur() == joueurCourant.Couleur){
                             System.out.println("Erreur coordonnées incorrectes");
                             ligne = sc.nextInt();
                             colonne = sc.nextInt();
