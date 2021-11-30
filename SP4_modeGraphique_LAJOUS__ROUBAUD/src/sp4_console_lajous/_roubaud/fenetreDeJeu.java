@@ -36,7 +36,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             message.setText("Le joueur " + joueurCourant.nom + " récupère un de ses jetons");
                             Jeton jrecup = c.recupererJeton();
                             joueurCourant.ajouterJeton(jrecup);
-                            System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
                             c.supprimerJeton();
                             
                             joueurSuivant();
@@ -44,11 +43,9 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             if (joueurCourant.nombreDesintegrateurs > 0) {
                                 message.setText("Le joueur " + joueurCourant.nom + " désintégre un jeton");
                                 c.supprimerJeton();
-                                System.out.println("Mais que se passe-t-il ici ?");
                                 joueurCourant.nombreDesintegrateurs -= 1;
                                 lbl_j1_desint.setText(ListeJoueur[0].nombreDesintegrateurs + "");
                                 lbl_j2_desint.setText(ListeJoueur[1].nombreDesintegrateurs + "");
-                                System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
                                 joueurSuivant();
                             } else {
                                 return;
@@ -336,7 +333,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         //effet du jeton sur la partie
         boolean place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants], indiceColonne);
-        System.out.println("On place");
         
         boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
         boolean vJ2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
@@ -374,16 +370,6 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         
         VerifColonnesRemplies();
         panneau_grille.repaint();
-        
-        System.out.println("nb jetons : "+joueurCourant.nom+" "+joueurCourant.nombreJetonsRestants);
-        /*for(int i=0 ; i<joueurCourant.ListeJetons.length ; i++){
-            if(joueurCourant.ListeJetons[i] == null){
-                System.out.print(i+"NULL ");
-            }
-            else{
-                System.out.print(i+"P ");
-            }
-        }*/
         
         return place;
     }

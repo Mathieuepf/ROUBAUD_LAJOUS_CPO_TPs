@@ -38,13 +38,6 @@ public class Joueur {
             }
             ListeJetons[nombreJetonsRestants] = n;
             nombreJetonsRestants += 1;
-            for (int i = 0; i < ListeJetons.length; i++) {
-                if (ListeJetons[i] == null) {
-                    System.out.print(i + "NULL ");
-                } else {
-                    System.out.print(i + "P ");
-                }
-            }
         }
     }
 
