@@ -36,6 +36,7 @@ public class fenetreDeJeu extends javax.swing.JFrame {
                             message.setText("Le joueur " + joueurCourant.nom + " récupère un de ses jetons");
                             Jeton jrecup = c.recupererJeton();
                             joueurCourant.ajouterJeton(jrecup);
+                            joueurCourant.nombreJetonsRestants += 1;
                             c.supprimerJeton();
                             joueurSuivant();
                         } else {
@@ -330,7 +331,8 @@ public class fenetreDeJeu extends javax.swing.JFrame {
 
         //effet du jeton sur la partie
         boolean place = grilleJeu.ajouterJetonDansColonne(joueurCourant.ListeJetons[joueurCourant.nombreJetonsRestants], indiceColonne);
-
+        System.out.println("On place");
+        
         boolean vJ1 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[0]);
         boolean vJ2 = grilleJeu.etreGagnantePourJoueur(ListeJoueur[1]);
 
@@ -367,6 +369,17 @@ public class fenetreDeJeu extends javax.swing.JFrame {
         
         VerifColonnesRemplies();
         panneau_grille.repaint();
+        
+        System.out.println("nb jetons : "+joueurCourant.nombreJetonsRestants);
+        for(int i=0 ; i<joueurCourant.ListeJetons.length ; i++){
+            if(joueurCourant.ListeJetons[i] == null){
+                System.out.print(i+"NULL ");
+            }
+            else{
+                System.out.print(i+"P ");
+            }
+        }
+        
         return place;
     }
 
