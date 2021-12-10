@@ -10,8 +10,9 @@ package mastermind_roubaud;
  */
 public class GrilleJeton {
     Jeton [][] grille = new Jeton[4][12];
+    int nbTour = 0;
     
-    public void ajouterJetonCase(Jeton j, int ligne, int colonne){
-        grille[ligne][colonne] = j;
+    public void ajouterJetonCase(Jeton j, int rang){
+        grille[rang][nbTour] = j;
     }
 }

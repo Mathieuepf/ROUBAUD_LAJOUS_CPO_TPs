@@ -4,6 +4,8 @@
  */
 package mastermind_roubaud;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ROUBAUD Mathieu
@@ -11,6 +13,18 @@ package mastermind_roubaud;
 public class GrilleJeuReponse {
     JetonReponse [][] grille = new JetonReponse[4][12];
     String couleur; //rouge ou noir
+    int nbTour = 0;
     
-    //Ajouter si couleur correspond à la couleur de la grille
+    public void PlacementJetonsReponse(JetonReponse[] tabJ){
+        ArrayList<JetonReponse> save = new ArrayList<JetonReponse>();
+        for(int i=0 ; i<tabJ.length ; i++){
+            if(tabJ[i].couleur == couleur){
+                save.add(tabJ[i]);
+            }  
+        }
+        
+        for(int i=0 ; i<save.size() ; i++){
+            grille[i][nbTour] = save.get(i);
+        }
+    }
 }
