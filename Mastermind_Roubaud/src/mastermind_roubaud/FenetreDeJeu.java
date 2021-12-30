@@ -26,8 +26,57 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grilleReponse = new javax.swing.JPanel();
+        grilleDejeu = new javax.swing.JPanel();
+        infoJeu = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        grilleReponse.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout grilleReponseLayout = new javax.swing.GroupLayout(grilleReponse);
+        grilleReponse.setLayout(grilleReponseLayout);
+        grilleReponseLayout.setHorizontalGroup(
+            grilleReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
+        );
+        grilleReponseLayout.setVerticalGroup(
+            grilleReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(grilleReponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 330, 610));
+
+        grilleDejeu.setBackground(new java.awt.Color(153, 153, 255));
+
+        javax.swing.GroupLayout grilleDejeuLayout = new javax.swing.GroupLayout(grilleDejeu);
+        grilleDejeu.setLayout(grilleDejeuLayout);
+        grilleDejeuLayout.setHorizontalGroup(
+            grilleDejeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 350, Short.MAX_VALUE)
+        );
+        grilleDejeuLayout.setVerticalGroup(
+            grilleDejeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 610, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(grilleDejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 350, 610));
+
+        infoJeu.setBackground(new java.awt.Color(102, 102, 255));
+
+        javax.swing.GroupLayout infoJeuLayout = new javax.swing.GroupLayout(infoJeu);
+        infoJeu.setLayout(infoJeuLayout);
+        infoJeuLayout.setHorizontalGroup(
+            infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        infoJeuLayout.setVerticalGroup(
+            infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 180, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(infoJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 90, 220, 180));
 
         setBounds(0, 0, 1414, 787);
     }// </editor-fold>//GEN-END:initComponents
@@ -68,5 +117,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel grilleDejeu;
+    private javax.swing.JPanel grilleReponse;
+    private javax.swing.JPanel infoJeu;
     // End of variables declaration//GEN-END:variables
 }
