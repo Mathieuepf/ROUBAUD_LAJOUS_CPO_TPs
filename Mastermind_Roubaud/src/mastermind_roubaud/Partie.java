@@ -21,5 +21,9 @@ public class Partie {
         gNonPlace.nbTour ++;
     }
     
+    public boolean partieFinie(){
+        return true;
+    }
+    
     
 }
