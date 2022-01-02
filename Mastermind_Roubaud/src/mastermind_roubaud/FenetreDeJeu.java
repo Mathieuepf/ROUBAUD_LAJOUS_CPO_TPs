@@ -29,8 +29,21 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         grilleReponse = new javax.swing.JPanel();
         grilleDejeu = new javax.swing.JPanel();
         infoJeu = new javax.swing.JPanel();
-        commandeJeu = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        commandeJeu = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        butJaune = new javax.swing.JButton();
+        butBleu = new javax.swing.JButton();
+        butRouge = new javax.swing.JButton();
+        butVert = new javax.swing.JButton();
+        butBlanc = new javax.swing.JButton();
+        butNoir = new javax.swing.JButton();
+        valid = new javax.swing.JButton();
+        RetirP = new javax.swing.JButton();
+        Titre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,39 +80,170 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         infoJeu.setBackground(new java.awt.Color(102, 102, 255));
 
+        jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
+        jLabel2.setText("Informations de jeu");
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel1.setText("Nombre d'essaies restants : ");
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel3.setText("12");
+
         javax.swing.GroupLayout infoJeuLayout = new javax.swing.GroupLayout(infoJeu);
         infoJeu.setLayout(infoJeuLayout);
         infoJeuLayout.setHorizontalGroup(
             infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(infoJeuLayout.createSequentialGroup()
+                .addGroup(infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(infoJeuLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(infoJeuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 9, Short.MAX_VALUE))
         );
         infoJeuLayout.setVerticalGroup(
             infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGroup(infoJeuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         getContentPane().add(infoJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 90, 220, 180));
 
         commandeJeu.setBackground(new java.awt.Color(102, 102, 255));
 
+        jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
+        jLabel4.setText("Commandes de jeu");
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        jLabel5.setText("Pions :");
+
+        butJaune.setBackground(new java.awt.Color(255, 255, 51));
+        butJaune.setForeground(new java.awt.Color(0, 0, 0));
+        butJaune.setText("Jaune");
+        butJaune.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butJaune.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butJauneActionPerformed(evt);
+            }
+        });
+
+        butBleu.setBackground(new java.awt.Color(0, 102, 204));
+        butBleu.setText("Bleu");
+        butBleu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        butRouge.setBackground(new java.awt.Color(255, 51, 51));
+        butRouge.setText("Rouge");
+        butRouge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        butVert.setBackground(new java.awt.Color(0, 204, 51));
+        butVert.setText("Vert");
+        butVert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        butBlanc.setBackground(new java.awt.Color(255, 255, 255));
+        butBlanc.setForeground(new java.awt.Color(0, 0, 0));
+        butBlanc.setText("Blanc");
+        butBlanc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        butNoir.setBackground(new java.awt.Color(0, 0, 0));
+        butNoir.setText("Noir");
+        butNoir.setToolTipText("");
+        butNoir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butNoir.setRolloverEnabled(true);
+        butNoir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butNoirActionPerformed(evt);
+            }
+        });
+
+        valid.setText("Valider Combinaison");
+        valid.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        RetirP.setText("Retirer Pion");
+        RetirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout commandeJeuLayout = new javax.swing.GroupLayout(commandeJeu);
         commandeJeu.setLayout(commandeJeuLayout);
         commandeJeuLayout.setHorizontalGroup(
             commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commandeJeuLayout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addGroup(commandeJeuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                        .addComponent(butJaune, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(butBleu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                        .addComponent(butRouge, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(butVert, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                        .addComponent(butBlanc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(butNoir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(RetirP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         commandeJeuLayout.setVerticalGroup(
             commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
+            .addGroup(commandeJeuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butJaune)
+                    .addComponent(butBleu))
+                .addGap(18, 18, 18)
+                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(butRouge)
+                    .addComponent(butVert))
+                .addGap(18, 18, 18)
+                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(butBlanc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(butNoir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(RetirP)
+                .addGap(18, 18, 18)
+                .addComponent(valid)
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         getContentPane().add(commandeJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 310, 220, 390));
 
-        jLabel1.setText("MASTERMIND");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 230, 60));
+        Titre.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
+        Titre.setText("MASTERMIND");
+        getContentPane().add(Titre, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 170, 60));
 
         setBounds(0, 0, 1414, 787);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void butJauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butJauneActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butJauneActionPerformed
+
+    private void butNoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_butNoirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,10 +281,23 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton RetirP;
+    private javax.swing.JLabel Titre;
+    private javax.swing.JButton butBlanc;
+    private javax.swing.JButton butBleu;
+    private javax.swing.JButton butJaune;
+    private javax.swing.JButton butNoir;
+    private javax.swing.JButton butRouge;
+    private javax.swing.JButton butVert;
     private javax.swing.JPanel commandeJeu;
     private javax.swing.JPanel grilleDejeu;
     private javax.swing.JPanel grilleReponse;
     private javax.swing.JPanel infoJeu;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton valid;
     // End of variables declaration//GEN-END:variables
 }
