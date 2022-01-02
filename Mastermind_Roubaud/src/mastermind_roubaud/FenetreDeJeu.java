@@ -23,14 +23,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         for(int i=0 ; i<4 ; i++){
             for(int j=0 ; j<12 ; j++){
-                JetonGraphique jetonG = new JetonGraphique();
+                JetonGraphique jetonG = new JetonGraphique(grilleJeu.grille[i][j]);
                 panneauJeu.add(jetonG);
             }
         }
         
         for(int i=0 ; i<4 ; i++){
             for(int j=0 ; j<12 ; j++){
-                JetonGraphique jetonR = new JetonGraphique();
+                JetonGraphique jetonR = new JetonGraphique(grilleRep.grille[i][j]);
                 panneauReponse.add(jetonR);
             }
         }

@@ -12,6 +12,16 @@ import javax.swing.JButton;
  */
 public class JetonGraphique extends JButton {
     Jeton jetonAssocie;
+    JetonReponse jetonRepAsso;
+    boolean typeJeton; //Si Jeton : true , si JetonReponse : false
     
+    public JetonGraphique(Jeton unJeton){
+        jetonAssocie = unJeton;
+        typeJeton = true;
+    }
     
+    public JetonGraphique(JetonReponse unJetonR){
+        jetonRepAsso = unJetonR;
+        typeJeton = false;
+    }
 }
