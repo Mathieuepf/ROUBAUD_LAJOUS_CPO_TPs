@@ -17,6 +17,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     GrilleJeuReponse grilleRep = new GrilleJeuReponse();
     int colonneCourante = 0;
     int nbTours = 0;
+    JetonGraphique [][] caseJetons = new JetonGraphique [4][12];
     
     public FenetreDeJeu() {
         initComponents();
@@ -25,8 +26,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             for(int j=0 ; j<12 ; j++){
                 JetonGraphique jetonG = new JetonGraphique(grilleJeu.grille[i][j]);
                 panneauJeu.add(jetonG);
+                caseJetons[i][j] = jetonG;
             }
         }
+        //caseJetons[0][0].setBackground(Color.red);
         
         for(int i=0 ; i<4 ; i++){
             for(int j=0 ; j<12 ; j++){
@@ -34,8 +37,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 panneauReponse.add(jetonR);
             }
         }
-        
-        //retirP.setBackground(Color.red);
     }
 
     /**
@@ -268,42 +269,54 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void butJauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butJauneActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "jaune";
+            Jeton J = new Jeton("jaune");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.YELLOW);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butJauneActionPerformed
 
     private void butNoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoirActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "noir";
+            Jeton J = new Jeton("noir");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.BLACK);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butNoirActionPerformed
 
     private void butBleuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBleuActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "bleu";
+            Jeton J = new Jeton("bleu");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.BLUE);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butBleuActionPerformed
 
     private void butRougeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRougeActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "rouge";
+            Jeton J = new Jeton("rouge");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.RED);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butRougeActionPerformed
 
     private void butVertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVertActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "vert";
+            Jeton J = new Jeton("vert");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.GREEN);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butVertActionPerformed
 
     private void butBlancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBlancActionPerformed
         if(colonneCourante < 4){
-            grilleJeu.grille[colonneCourante][nbTours].couleur = "jaune";
+            Jeton J = new Jeton("blanc");
+            grilleJeu.grille[colonneCourante][nbTours] = J;
+            miseAJourCase(Color.WHITE);
             colonneCourante ++;
         }
     }//GEN-LAST:event_butBlancActionPerformed
@@ -353,11 +366,25 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
     }
     
-    public void tourSuivant(){
+    /*public void tourSuivant(){
         nbTours ++;
         grilleJeu.nbTour ++;
         grilleRep.nbTour ++;
+    }*/
+    
+    public void miseAJourCase(Color c){
+        caseJetons[colonneCourante][nbTours].setBackground(c);
     }
+    
+    /*public void miseAjourPanneau(Color c){
+        for(int i=0 ; i<4 ; i++){
+            for(int j=0 ; j<12 ; j++){
+                if(grilleJeu.grille[i][j].couleur != null){
+                    caseJetons[i][j].setBackground(c);
+                }
+            }
+        }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titre;
