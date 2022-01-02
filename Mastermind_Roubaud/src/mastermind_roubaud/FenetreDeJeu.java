@@ -18,23 +18,25 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     int colonneCourante = 0;
     int nbTours = 0;
     JetonGraphique [][] caseJetons = new JetonGraphique [4][12];
+    JetonGraphique [][] caseJetonsRep = new JetonGraphique [4][12];
     
     public FenetreDeJeu() {
         initComponents();
         
-        for(int i=0 ; i<4 ; i++){
-            for(int j=0 ; j<12 ; j++){
-                JetonGraphique jetonG = new JetonGraphique(grilleJeu.grille[i][j]);
+        for(int i=0 ; i<12 ; i++){
+            for(int j=0 ; j<4 ; j++){
+                JetonGraphique jetonG = new JetonGraphique(grilleJeu.grille[j][i]);
                 panneauJeu.add(jetonG);
-                caseJetons[i][j] = jetonG;
+                caseJetons[j][i] = jetonG;
             }
         }
         //caseJetons[0][0].setBackground(Color.red);
         
-        for(int i=0 ; i<4 ; i++){
-            for(int j=0 ; j<12 ; j++){
-                JetonGraphique jetonR = new JetonGraphique(grilleRep.grille[i][j]);
+        for(int i=0 ; i<12 ; i++){
+            for(int j=0 ; j<4 ; j++){
+                JetonGraphique jetonR = new JetonGraphique(grilleRep.grille[j][i]);
                 panneauReponse.add(jetonR);
+                caseJetonsRep[j][i] = jetonR;
             }
         }
     }
@@ -322,13 +324,20 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }//GEN-LAST:event_butBlancActionPerformed
 
     private void retirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirPActionPerformed
-        // TODO add your handling code here:
+        if(colonneCourante > 0){
+            colonneCourante -= 1;
+            grilleJeu.grille[colonneCourante][nbTours] = null;
+            miseAJourCase(Color.lightGray);
+        }
     }//GEN-LAST:event_retirPActionPerformed
 
     private void validActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validActionPerformed
-        nbTours ++;
-        grilleJeu.nbTour ++;
-        grilleRep.nbTour ++;
+        if(colonneCourante == 4){
+            nbTours += 1;
+            grilleJeu.nbTour += 1;
+            grilleRep.nbTour += 1;
+            colonneCourante = 0;
+        }        
     }//GEN-LAST:event_validActionPerformed
 
     /**
