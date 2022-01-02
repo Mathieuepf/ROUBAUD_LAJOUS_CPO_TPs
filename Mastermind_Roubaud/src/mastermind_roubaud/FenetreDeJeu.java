@@ -139,19 +139,39 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         butBleu.setBackground(new java.awt.Color(0, 102, 204));
         butBleu.setText("Bleu");
         butBleu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butBleu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBleuActionPerformed(evt);
+            }
+        });
 
         butRouge.setBackground(new java.awt.Color(255, 51, 51));
         butRouge.setText("Rouge");
         butRouge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butRouge.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butRougeActionPerformed(evt);
+            }
+        });
 
         butVert.setBackground(new java.awt.Color(0, 204, 51));
         butVert.setText("Vert");
         butVert.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butVert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butVertActionPerformed(evt);
+            }
+        });
 
         butBlanc.setBackground(new java.awt.Color(255, 255, 255));
         butBlanc.setForeground(new java.awt.Color(0, 0, 0));
         butBlanc.setText("Blanc");
         butBlanc.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        butBlanc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                butBlancActionPerformed(evt);
+            }
+        });
 
         butNoir.setBackground(new java.awt.Color(0, 0, 0));
         butNoir.setText("Noir");
@@ -166,9 +186,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         valid.setText("Valider Combinaison");
         valid.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        valid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                validActionPerformed(evt);
+            }
+        });
 
         retirP.setText("Retirer Pion");
         retirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        retirP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                retirPActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panneauCommandeJeuLayout = new javax.swing.GroupLayout(panneauCommandeJeu);
         panneauCommandeJeu.setLayout(panneauCommandeJeuLayout);
@@ -237,14 +267,56 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butJauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butJauneActionPerformed
-        //if colonneCourante < 4
-        grilleJeu.grille[colonneCourante][nbTours].couleur = "Jaune";
-        colonneCourante ++;
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "jaune";
+            colonneCourante ++;
+        }
     }//GEN-LAST:event_butJauneActionPerformed
 
     private void butNoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoirActionPerformed
-        // TODO add your handling code here:
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "noir";
+            colonneCourante ++;
+        }
     }//GEN-LAST:event_butNoirActionPerformed
+
+    private void butBleuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBleuActionPerformed
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "bleu";
+            colonneCourante ++;
+        }
+    }//GEN-LAST:event_butBleuActionPerformed
+
+    private void butRougeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butRougeActionPerformed
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "rouge";
+            colonneCourante ++;
+        }
+    }//GEN-LAST:event_butRougeActionPerformed
+
+    private void butVertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butVertActionPerformed
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "vert";
+            colonneCourante ++;
+        }
+    }//GEN-LAST:event_butVertActionPerformed
+
+    private void butBlancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butBlancActionPerformed
+        if(colonneCourante < 4){
+            grilleJeu.grille[colonneCourante][nbTours].couleur = "jaune";
+            colonneCourante ++;
+        }
+    }//GEN-LAST:event_butBlancActionPerformed
+
+    private void retirPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retirPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_retirPActionPerformed
+
+    private void validActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validActionPerformed
+        nbTours ++;
+        grilleJeu.nbTour ++;
+        grilleRep.nbTour ++;
+    }//GEN-LAST:event_validActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,6 +351,12 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 new FenetreDeJeu().setVisible(true);
             }
         });
+    }
+    
+    public void tourSuivant(){
+        nbTours ++;
+        grilleJeu.nbTour ++;
+        grilleRep.nbTour ++;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
