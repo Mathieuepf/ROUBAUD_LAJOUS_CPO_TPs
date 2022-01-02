@@ -4,6 +4,8 @@
  */
 package mastermind_roubaud;
 
+import java.awt.Color;
+
 /**
  *
  * @author ROUBAUD Mathieu
@@ -13,6 +15,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     Joueur player;
     GrilleJeton grilleJeu = new GrilleJeton();
     GrilleJeuReponse grilleRep = new GrilleJeuReponse();
+    int colonneCourante = 0;
+    int nbTours = 0;
     
     public FenetreDeJeu() {
         initComponents();
@@ -30,6 +34,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 panneauReponse.add(jetonR);
             }
         }
+        
+        //retirP.setBackground(Color.red);
     }
 
     /**
@@ -57,7 +63,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         butBlanc = new javax.swing.JButton();
         butNoir = new javax.swing.JButton();
         valid = new javax.swing.JButton();
-        RetirP = new javax.swing.JButton();
+        retirP = new javax.swing.JButton();
         Titre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -161,8 +167,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         valid.setText("Valider Combinaison");
         valid.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        RetirP.setText("Retirer Pion");
-        RetirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        retirP.setText("Retirer Pion");
+        retirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout panneauCommandeJeuLayout = new javax.swing.GroupLayout(panneauCommandeJeu);
         panneauCommandeJeu.setLayout(panneauCommandeJeuLayout);
@@ -191,7 +197,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(RetirP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(retirP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -215,7 +221,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     .addComponent(butBlanc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(butNoir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(RetirP)
+                .addComponent(retirP)
                 .addGap(18, 18, 18)
                 .addComponent(valid)
                 .addContainerGap(93, Short.MAX_VALUE))
@@ -231,7 +237,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void butJauneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butJauneActionPerformed
-        // TODO add your handling code here:
+        //if colonneCourante < 4
+        grilleJeu.grille[colonneCourante][nbTours].couleur = "Jaune";
+        colonneCourante ++;
     }//GEN-LAST:event_butJauneActionPerformed
 
     private void butNoirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butNoirActionPerformed
@@ -274,7 +282,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton RetirP;
     private javax.swing.JLabel Titre;
     private javax.swing.JButton butBlanc;
     private javax.swing.JButton butBleu;
@@ -291,6 +298,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JPanel panneauInfoJeu;
     private javax.swing.JPanel panneauJeu;
     private javax.swing.JPanel panneauReponse;
+    private javax.swing.JButton retirP;
     private javax.swing.JButton valid;
     // End of variables declaration//GEN-END:variables
 }
