@@ -4,11 +4,13 @@
  */
 package mastermind_roubaud;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author ROUBAUD Mathieu
  */
-public class Jeton {
+public class Jeton extends JButton {
     String couleur; //rouge = 0, blanc = 1, jaune = 2, vert = 3, bleu = 4, noir = 5
     
     public Jeton(String c){

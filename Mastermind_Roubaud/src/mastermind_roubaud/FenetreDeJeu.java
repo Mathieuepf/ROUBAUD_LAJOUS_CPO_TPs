@@ -9,12 +9,21 @@ package mastermind_roubaud;
  * @author ROUBAUD Mathieu
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FenetreDeJeu
-     */
+    
+    Joueur player;
+    GrilleJeton grilleJeu = new GrilleJeton();
+    GrilleJeuReponse grilleRep = new GrilleJeuReponse();
+    
     public FenetreDeJeu() {
         initComponents();
+        
+        for(int i=0 ; i<4 ; i++){
+            for(int j=0 ; j<12 ; j++){
+                
+                panneauJeu.add(grilleJeu[i][j]);
+                
+            }
+        }
     }
 
     /**
@@ -26,13 +35,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grilleReponse = new javax.swing.JPanel();
-        grilleDejeu = new javax.swing.JPanel();
-        infoJeu = new javax.swing.JPanel();
+        panneauReponse = new javax.swing.JPanel();
+        panneauJeu = new javax.swing.JPanel();
+        panneauInfoJeu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        commandeJeu = new javax.swing.JPanel();
+        panneauCommandeJeu = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         butJaune = new javax.swing.JButton();
@@ -48,37 +57,37 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        grilleReponse.setBackground(new java.awt.Color(153, 153, 255));
+        panneauReponse.setBackground(new java.awt.Color(153, 153, 255));
 
-        javax.swing.GroupLayout grilleReponseLayout = new javax.swing.GroupLayout(grilleReponse);
-        grilleReponse.setLayout(grilleReponseLayout);
-        grilleReponseLayout.setHorizontalGroup(
-            grilleReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panneauReponseLayout = new javax.swing.GroupLayout(panneauReponse);
+        panneauReponse.setLayout(panneauReponseLayout);
+        panneauReponseLayout.setHorizontalGroup(
+            panneauReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 330, Short.MAX_VALUE)
         );
-        grilleReponseLayout.setVerticalGroup(
-            grilleReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panneauReponseLayout.setVerticalGroup(
+            panneauReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 610, Short.MAX_VALUE)
         );
 
-        getContentPane().add(grilleReponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 330, 610));
+        getContentPane().add(panneauReponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 330, 610));
 
-        grilleDejeu.setBackground(new java.awt.Color(153, 153, 255));
+        panneauJeu.setBackground(new java.awt.Color(153, 153, 255));
 
-        javax.swing.GroupLayout grilleDejeuLayout = new javax.swing.GroupLayout(grilleDejeu);
-        grilleDejeu.setLayout(grilleDejeuLayout);
-        grilleDejeuLayout.setHorizontalGroup(
-            grilleDejeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout panneauJeuLayout = new javax.swing.GroupLayout(panneauJeu);
+        panneauJeu.setLayout(panneauJeuLayout);
+        panneauJeuLayout.setHorizontalGroup(
+            panneauJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 350, Short.MAX_VALUE)
         );
-        grilleDejeuLayout.setVerticalGroup(
-            grilleDejeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panneauJeuLayout.setVerticalGroup(
+            panneauJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 610, Short.MAX_VALUE)
         );
 
-        getContentPane().add(grilleDejeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 350, 610));
+        getContentPane().add(panneauJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 350, 610));
 
-        infoJeu.setBackground(new java.awt.Color(102, 102, 255));
+        panneauInfoJeu.setBackground(new java.awt.Color(102, 102, 255));
 
         jLabel2.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
         jLabel2.setText("Informations de jeu");
@@ -89,37 +98,37 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel3.setText("12");
 
-        javax.swing.GroupLayout infoJeuLayout = new javax.swing.GroupLayout(infoJeu);
-        infoJeu.setLayout(infoJeuLayout);
-        infoJeuLayout.setHorizontalGroup(
-            infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoJeuLayout.createSequentialGroup()
-                .addGroup(infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(infoJeuLayout.createSequentialGroup()
+        javax.swing.GroupLayout panneauInfoJeuLayout = new javax.swing.GroupLayout(panneauInfoJeu);
+        panneauInfoJeu.setLayout(panneauInfoJeuLayout);
+        panneauInfoJeuLayout.setHorizontalGroup(
+            panneauInfoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauInfoJeuLayout.createSequentialGroup()
+                .addGroup(panneauInfoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panneauInfoJeuLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(infoJeuLayout.createSequentialGroup()
+                    .addGroup(panneauInfoJeuLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
-        infoJeuLayout.setVerticalGroup(
-            infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(infoJeuLayout.createSequentialGroup()
+        panneauInfoJeuLayout.setVerticalGroup(
+            panneauInfoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauInfoJeuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(infoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauInfoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
-        getContentPane().add(infoJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 90, 220, 180));
+        getContentPane().add(panneauInfoJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 90, 220, 180));
 
-        commandeJeu.setBackground(new java.awt.Color(102, 102, 255));
+        panneauCommandeJeu.setBackground(new java.awt.Color(102, 102, 255));
 
         jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 0, 14)); // NOI18N
         jLabel4.setText("Commandes de jeu");
@@ -171,54 +180,54 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         RetirP.setText("Retirer Pion");
         RetirP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout commandeJeuLayout = new javax.swing.GroupLayout(commandeJeu);
-        commandeJeu.setLayout(commandeJeuLayout);
-        commandeJeuLayout.setHorizontalGroup(
-            commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, commandeJeuLayout.createSequentialGroup()
+        javax.swing.GroupLayout panneauCommandeJeuLayout = new javax.swing.GroupLayout(panneauCommandeJeu);
+        panneauCommandeJeu.setLayout(panneauCommandeJeuLayout);
+        panneauCommandeJeuLayout.setHorizontalGroup(
+            panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panneauCommandeJeuLayout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
-            .addGroup(commandeJeuLayout.createSequentialGroup()
+            .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                    .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                         .addComponent(butJaune, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(butBleu, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                    .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                         .addComponent(butRouge, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(butVert, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                    .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                         .addComponent(butBlanc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(butNoir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(commandeJeuLayout.createSequentialGroup()
+                    .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(RetirP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(valid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        commandeJeuLayout.setVerticalGroup(
-            commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(commandeJeuLayout.createSequentialGroup()
+        panneauCommandeJeuLayout.setVerticalGroup(
+            panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panneauCommandeJeuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(butJaune)
                     .addComponent(butBleu))
                 .addGap(18, 18, 18)
-                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(butRouge)
                     .addComponent(butVert))
                 .addGap(18, 18, 18)
-                .addGroup(commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panneauCommandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(butBlanc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(butNoir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
@@ -228,7 +237,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 .addContainerGap(93, Short.MAX_VALUE))
         );
 
-        getContentPane().add(commandeJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 310, 220, 390));
+        getContentPane().add(panneauCommandeJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 310, 220, 390));
 
         Titre.setFont(new java.awt.Font("Perpetua Titling MT", 0, 24)); // NOI18N
         Titre.setText("MASTERMIND");
@@ -289,15 +298,15 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JButton butNoir;
     private javax.swing.JButton butRouge;
     private javax.swing.JButton butVert;
-    private javax.swing.JPanel commandeJeu;
-    private javax.swing.JPanel grilleDejeu;
-    private javax.swing.JPanel grilleReponse;
-    private javax.swing.JPanel infoJeu;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel panneauCommandeJeu;
+    private javax.swing.JPanel panneauInfoJeu;
+    private javax.swing.JPanel panneauJeu;
+    private javax.swing.JPanel panneauReponse;
     private javax.swing.JButton valid;
     // End of variables declaration//GEN-END:variables
 }
