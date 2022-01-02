@@ -4,19 +4,14 @@
  */
 package mastermind_roubaud;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author ROUBAUD Mathieu
  */
-public class GrilleJeton {
-    Jeton [][] grille = new Jeton[4][12];
-    int nbTour = 0;
+public class JetonGraphique extends JButton {
+    Jeton jetonAssocie;
     
-    public void ajouterJetonCase(Jeton j, int rang){
-        grille[rang][nbTour] = j;
-    }
     
-    public Jeton getJeton(int i, int j){
-        return grille[i][j];
-    }
 }

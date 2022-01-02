@@ -4,13 +4,12 @@
  */
 package mastermind_roubaud;
 
-import javax.swing.JButton;
 
 /**
  *
  * @author ROUBAUD Mathieu
  */
-public class JetonReponse extends JButton {
+public class JetonReponse {
     String couleur; //rouge ou blanc
     boolean placee; //jeton placee ou non
     

@@ -19,9 +19,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         for(int i=0 ; i<4 ; i++){
             for(int j=0 ; j<12 ; j++){
-                
-                panneauJeu.add(grilleJeu[i][j]);
-                
+                JetonGraphique jetonG = new JetonGraphique();
+                panneauJeu.add(jetonG);
             }
         }
     }
