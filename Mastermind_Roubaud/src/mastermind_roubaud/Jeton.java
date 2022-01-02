@@ -10,26 +10,30 @@ package mastermind_roubaud;
  * @author ROUBAUD Mathieu
  */
 public class Jeton {
-    String couleur; //rouge = 0, blanc = 1, jaune = 2, vert = 3, bleu = 4, noir = 5
+    String couleur = "nd"; //rouge = 0, blanc = 1, jaune = 2, vert = 3, bleu = 4, noir = 5
     
     public Jeton(String c){
         couleur = c;
     }
     
     public Jeton(int a){
-        switch(a){
-            case 0:
-                couleur = "rouge";
-            case 1:
-                couleur = "blanc";
-            case 2:
-                couleur = "jaune";
-            case 3:
-                couleur = "vert";
-            case 4:
-                couleur = "bleu";
-            case 5:
-                couleur = "noir";
+        if(a == 0){
+            couleur = "rouge";
+        }
+        if(a == 1){
+            couleur = "blanc";
+        }
+        if(a == 2){
+            couleur = "jaune";
+        }
+        if(a == 3){
+            couleur = "vert";
+        }
+        if(a == 4){
+            couleur = "bleu";
+        }
+        if(a == 5){
+            couleur = "noir";
         }
     }
     
