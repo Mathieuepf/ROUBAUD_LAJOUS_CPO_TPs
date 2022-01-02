@@ -29,6 +29,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         grilleReponse = new javax.swing.JPanel();
         grilleDejeu = new javax.swing.JPanel();
         infoJeu = new javax.swing.JPanel();
+        commandeJeu = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,6 +80,24 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
         getContentPane().add(infoJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 90, 220, 180));
 
+        commandeJeu.setBackground(new java.awt.Color(102, 102, 255));
+
+        javax.swing.GroupLayout commandeJeuLayout = new javax.swing.GroupLayout(commandeJeu);
+        commandeJeu.setLayout(commandeJeuLayout);
+        commandeJeuLayout.setHorizontalGroup(
+            commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
+        );
+        commandeJeuLayout.setVerticalGroup(
+            commandeJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 390, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(commandeJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 310, 220, 390));
+
+        jLabel1.setText("MASTERMIND");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 20, 230, 60));
+
         setBounds(0, 0, 1414, 787);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -117,8 +137,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel commandeJeu;
     private javax.swing.JPanel grilleDejeu;
     private javax.swing.JPanel grilleReponse;
     private javax.swing.JPanel infoJeu;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
