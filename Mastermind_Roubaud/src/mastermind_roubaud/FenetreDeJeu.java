@@ -42,9 +42,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
         
         IA.creerUneCombinaison();
-        for(int j=0 ; j<4 ; j++){
-            System.out.println(IA.Wcombine[j].couleur);
-        }
         
     }
 
@@ -355,7 +352,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 for(int i=0 ; i<compteurs[1] ; i++){
                     caseJetonsRep[compteurs[0]+i][nbTours].setBackground(Color.white);
                 }
+            }else{
+                verifFinPartie(true);
             }
+            
+            verifFinPartie(false);
             nbTours += 1;
         }        
     }//GEN-LAST:event_validActionPerformed
@@ -415,11 +416,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
     }*/
     
-    public boolean verifFinPartie(){
-        if(nbTours == 12){
-            return true;
-        }else{
-            return false;
+    public void verifFinPartie(boolean t){
+        if(nbTours == 12 || t){
+            System.out.println("partie finie");
         }
     }
     
