@@ -12,7 +12,8 @@ import java.awt.Color;
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
     
-    Joueur player;
+    Joueur player = new Joueur("pas de nom");
+    Ordinateur IA = new Ordinateur();
     GrilleJeton grilleJeu = new GrilleJeton();
     GrilleJeuReponse grilleRep = new GrilleJeuReponse();
     int colonneCourante = 0;
@@ -39,6 +40,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 caseJetonsRep[j][i] = jetonR;
             }
         }
+        
+        IA.creerUneCombinaison();
     }
 
     /**
@@ -337,6 +340,19 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             grilleJeu.nbTour += 1;
             grilleRep.nbTour += 1;
             colonneCourante = 0;
+            
+            int [] compteurs = new int[2];
+            compteurs = verifCombin();
+            
+            if(compteurs[0] != 4){
+                for(int i=0 ; i<compteurs[0] ; i++){
+                    caseJetonsRep[i][nbTours].setBackground(Color.red);
+                }
+                
+                for(int i=0 ; i<compteurs[1] ; i++){
+                    caseJetonsRep[compteurs[0]+i][nbTours].setBackground(Color.white);
+                }
+            }
         }        
     }//GEN-LAST:event_validActionPerformed
 
@@ -394,6 +410,49 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             }
         }
     }*/
+    
+    public boolean verifFinPartie(){
+        if(nbTours == 12){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public int[] verifCombin(){
+        int compteurRouge = 0; //nombre de jetons biens placés
+        int compteurBlanc = 0; //nombre de jetons bons dans la combinaison mais mal placé
+        int [] positionRouge = new int[4];
+        positionRouge[0] = 90;
+        positionRouge[1] = 90;
+        positionRouge[2] = 90;
+        positionRouge[3] = 90;
+        int [] compteurs = new int[2];
+        
+        for(int i=0 ; i<4 ; i++){
+            if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[i].couleur){
+                compteurRouge ++;
+                positionRouge[i] = i;
+            }
+        }
+        
+        for(int i=0 ; i<4 ; i++){
+            if(positionRouge[i] != i){
+                for(int j=0 ; j<4 ; j++){
+                    if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[j].couleur){
+                        compteurBlanc ++;
+                        break;
+                    }
+                }
+            }
+        }
+        compteurs[0] = compteurRouge;
+        compteurs[1] = compteurBlanc;
+        
+        return compteurs;
+    }
+        
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titre;

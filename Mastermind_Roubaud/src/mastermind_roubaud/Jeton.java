@@ -32,4 +32,23 @@ public class Jeton {
                 couleur = "noir";
         }
     }
+    
+    public int chiffreAcouleur(){
+        switch(couleur){
+            case "rouge":
+                return 0;
+            case "blanc":
+                return 1;
+            case "jaune":
+                return 2;
+            case "vert":
+                return 3;
+            case "bleu":
+                return 4;
+            case "noir":
+                return 5;
+            default:
+                return 10;
+        }
+    }
 }
