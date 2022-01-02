@@ -443,8 +443,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         for(int i=0 ; i<4 ; i++){
             if(positionRouge[i] != i){
                 for(int j=0 ; j<4 ; j++){
-                    if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[j].couleur){
+                    if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[j].couleur && positionRouge[j] != j){
                         compteurBlanc ++;
+                        positionRouge[j] = j;
                         break;
                     }
                 }
