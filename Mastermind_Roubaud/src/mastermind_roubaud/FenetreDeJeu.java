@@ -42,6 +42,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
         
         IA.creerUneCombinaison();
+        for(int j=0 ; j<4 ; j++){
+            System.out.println(IA.Wcombine[j].couleur);
+        }
+        
     }
 
     /**
@@ -336,7 +340,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
 
     private void validActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_validActionPerformed
         if(colonneCourante == 4){
-            nbTours += 1;
             grilleJeu.nbTour += 1;
             grilleRep.nbTour += 1;
             colonneCourante = 0;
@@ -353,6 +356,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                     caseJetonsRep[compteurs[0]+i][nbTours].setBackground(Color.white);
                 }
             }
+            nbTours += 1;
         }        
     }//GEN-LAST:event_validActionPerformed
 
