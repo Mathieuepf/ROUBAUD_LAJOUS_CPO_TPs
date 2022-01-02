@@ -23,6 +23,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 panneauJeu.add(jetonG);
             }
         }
+        
+        for(int i=0 ; i<4 ; i++){
+            for(int j=0 ; j<12 ; j++){
+                JetonGraphique jetonR = new JetonGraphique();
+                panneauReponse.add(jetonR);
+            }
+        }
     }
 
     /**
@@ -57,33 +64,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panneauReponse.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout panneauReponseLayout = new javax.swing.GroupLayout(panneauReponse);
-        panneauReponse.setLayout(panneauReponseLayout);
-        panneauReponseLayout.setHorizontalGroup(
-            panneauReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
-        panneauReponseLayout.setVerticalGroup(
-            panneauReponseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-
+        panneauReponse.setLayout(new java.awt.GridLayout(12, 4, 3, 3));
         getContentPane().add(panneauReponse, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 330, 610));
 
         panneauJeu.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout panneauJeuLayout = new javax.swing.GroupLayout(panneauJeu);
-        panneauJeu.setLayout(panneauJeuLayout);
-        panneauJeuLayout.setHorizontalGroup(
-            panneauJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 350, Short.MAX_VALUE)
-        );
-        panneauJeuLayout.setVerticalGroup(
-            panneauJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-
+        panneauJeu.setLayout(new java.awt.GridLayout(12, 4, 3, 3));
         getContentPane().add(panneauJeu, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 350, 610));
 
         panneauInfoJeu.setBackground(new java.awt.Color(102, 102, 255));
