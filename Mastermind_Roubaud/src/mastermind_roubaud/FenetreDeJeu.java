@@ -16,7 +16,6 @@ import javax.swing.JLabel;
  */
 public class FenetreDeJeu extends javax.swing.JFrame {
     
-    Joueur player = new Joueur("pas de nom");
     Ordinateur IA = new Ordinateur();
     GrilleJeton grilleJeu = new GrilleJeton();
     GrilleJeuReponse grilleRep = new GrilleJeuReponse();
@@ -27,6 +26,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
     public FenetreDeJeu() {
         initComponents();
+        
+        
         
         for(int i=0 ; i<12 ; i++){
             for(int j=0 ; j<4 ; j++){
@@ -406,11 +407,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         });
     }
     
-    /*public void tourSuivant(){
-        nbTours ++;
-        grilleJeu.nbTour ++;
-        grilleRep.nbTour ++;
-    }*/
     
     public void miseAJourCase(Color c){
         caseJetons[colonneCourante][nbTours].setBackground(c);
@@ -428,7 +424,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
     public void verifFinPartie(boolean partieFinie){
         if(nbTours == 11 || partieFinie){
-            if(nbTours==11){
+            if(partieFinie == false){
                 FenetreDeFin newFen = new FenetreDeFin(nbTours+1, false);
                 newFen.setVisible(true);
             }else{

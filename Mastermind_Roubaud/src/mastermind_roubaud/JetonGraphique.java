@@ -25,10 +25,4 @@ public class JetonGraphique extends JButton {
         jetonRepAsso = unJetonR;
         typeJeton = false;
     }
-    
-    /*public String retournerCouleur(){
-        if(jetonAssocie != null){
-            
-        }
-    }*/
 }
