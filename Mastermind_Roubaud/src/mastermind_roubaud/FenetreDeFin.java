@@ -13,15 +13,17 @@ public class FenetreDeFin extends javax.swing.JFrame {
     boolean victoire;
     int nbTours;
     
-    public FenetreDeFin() {
+    public FenetreDeFin(int tours, boolean win) {
         initComponents();
+        
+        victoire = win;
+        nbTours = tours;
         
         score.setText("Nombre d'essais : "+nbTours);
         if(victoire == false){
             messageResul.setText("DOMMAGE VOUS AVEZ PERDU ...");
         }
         
-        new FenetreDeFin().setVisible(true);
     }
 
     /**
@@ -102,7 +104,7 @@ public class FenetreDeFin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FenetreDeFin().setVisible(true);
+                //new FenetreDeFin().setVisible(true);
             }
         });
     }

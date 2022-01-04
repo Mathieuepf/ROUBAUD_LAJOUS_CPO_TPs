@@ -419,14 +419,13 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     }*/
     
     public void verifFinPartie(boolean partieFinie){
-        if(nbTours == 12 || partieFinie){
-            FenetreDeFin newFen = new FenetreDeFin();
-            newFen.nbTours = nbTours;
-            
-            if(nbTours==12){
-                newFen.victoire = false;
+        if(nbTours == 11 || partieFinie){
+            if(nbTours==11){
+                FenetreDeFin newFen = new FenetreDeFin(nbTours+1, false);
+                newFen.setVisible(true);
             }else{
-                newFen.victoire = true;
+                FenetreDeFin newFen = new FenetreDeFin(nbTours+1, true);
+                newFen.setVisible(true);
             }
         }
     }
