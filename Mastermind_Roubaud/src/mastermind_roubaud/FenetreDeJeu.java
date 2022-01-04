@@ -5,6 +5,10 @@
 package mastermind_roubaud;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -341,6 +345,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             grilleRep.nbTour += 1;
             colonneCourante = 0;
             
+            if(grilleJeu.grille[0][nbTours].couleur == "bleu" && grilleJeu.grille[1][nbTours].couleur == "blanc" && grilleJeu.grille[2][nbTours].couleur == "blanc" && grilleJeu.grille[3][nbTours].couleur == "rouge"){
+                easterEgg();
+            }
+            
             int [] compteurs = new int[2];
             compteurs = verifCombin();
             
@@ -462,6 +470,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         compteurs[1] = compteurBlanc;
         
         return compteurs;
+    }
+    
+    public void easterEgg(){
+        
+        //création d'une fenetre avec une image
+        JFrame easterFrame = new JFrame("Allez le FOOT");
+        easterFrame.setPreferredSize(new Dimension(800,600));
+        ImageIcon leFoot = new ImageIcon(getClass().getResource("/image/LesBleus.jpg"));
+        JLabel labelBleue = new JLabel(leFoot); //et pas la belle bleue
+        easterFrame.add(labelBleue);
+        easterFrame.pack();
+        easterFrame.setVisible(true);
     }
         
     
