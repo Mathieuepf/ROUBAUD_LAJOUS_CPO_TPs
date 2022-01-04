@@ -15,7 +15,8 @@ public class Ordinateur {
     
     public void creerUneCombinaison(){
         for(int i=0 ; i<4 ; i++){
-            int Rand = new Random().nextInt(5);
+            int Rand = new Random().nextInt(6);
+            System.out.println(Rand);
             Wcombine[i] = new Jeton(Rand);
             System.out.println(Wcombine[i].couleur);
         }
