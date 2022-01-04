@@ -59,7 +59,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         panneauInfoJeu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        nbToursGraph = new javax.swing.JLabel();
         panneauCommandeJeu = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -92,8 +92,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
         jLabel1.setText("Nombre d'essaies restants : ");
 
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
-        jLabel3.setText("12");
+        nbToursGraph.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 12)); // NOI18N
+        nbToursGraph.setText("12");
 
         javax.swing.GroupLayout panneauInfoJeuLayout = new javax.swing.GroupLayout(panneauInfoJeu);
         panneauInfoJeu.setLayout(panneauInfoJeuLayout);
@@ -108,7 +108,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nbToursGraph, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
         panneauInfoJeuLayout.setVerticalGroup(
@@ -119,7 +119,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panneauInfoJeuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel3))
+                    .addComponent(nbToursGraph))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
 
@@ -344,20 +344,22 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             int [] compteurs = new int[2];
             compteurs = verifCombin();
             
-            if(compteurs[0] != 4){
-                for(int i=0 ; i<compteurs[0] ; i++){
-                    caseJetonsRep[i][nbTours].setBackground(Color.red);
-                }
+            for(int i=0 ; i<compteurs[0] ; i++){
+                caseJetonsRep[i][nbTours].setBackground(Color.red);
+            }
+
+            for(int i=0 ; i<compteurs[1] ; i++){
+                caseJetonsRep[compteurs[0]+i][nbTours].setBackground(Color.white);
+            }
                 
-                for(int i=0 ; i<compteurs[1] ; i++){
-                    caseJetonsRep[compteurs[0]+i][nbTours].setBackground(Color.white);
-                }
+            if(compteurs[0] != 4){
+                verifFinPartie(false);
             }else{
                 verifFinPartie(true);
             }
             
-            verifFinPartie(false);
             nbTours += 1;
+            nbToursGraph.setText((12-nbTours)+"");
         }        
     }//GEN-LAST:event_validActionPerformed
 
@@ -416,8 +418,8 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
     }*/
     
-    public void verifFinPartie(boolean t){
-        if(nbTours == 12 || t){
+    public void verifFinPartie(boolean partieFinie){
+        if(nbTours == 12 || partieFinie){
             System.out.println("partie finie");
         }
     }
@@ -436,17 +438,17 @@ public class FenetreDeJeu extends javax.swing.JFrame {
             if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[i].couleur){
                 compteurRouge ++;
                 positionRouge[i] = i;
+                System.out.println("Jeton "+i+" bien plcé");
             }
         }
         
         for(int i=0 ; i<4 ; i++){
-            if(positionRouge[i] != i){
-                for(int j=0 ; j<4 ; j++){
-                    if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[j].couleur && positionRouge[j] != j){
-                        compteurBlanc ++;
-                        positionRouge[j] = j;
-                        break;
-                    }
+            for(int j=0 ; j<4 ; j++){
+                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionRouge[j] != j){
+                    compteurBlanc ++;
+                    positionRouge[j] = j;
+                    System.out.println("Jeton "+j+" bien pris en compte, boucle "+i);
+                    break;
                 }
             }
         }
@@ -468,9 +470,9 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     private javax.swing.JButton butVert;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel nbToursGraph;
     private javax.swing.JPanel panneauCommandeJeu;
     private javax.swing.JPanel panneauInfoJeu;
     private javax.swing.JPanel panneauJeu;
