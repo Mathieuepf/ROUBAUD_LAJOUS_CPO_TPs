@@ -420,7 +420,14 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     
     public void verifFinPartie(boolean partieFinie){
         if(nbTours == 12 || partieFinie){
-            System.out.println("partie finie");
+            FenetreDeFin newFen = new FenetreDeFin();
+            newFen.nbTours = nbTours;
+            
+            if(nbTours==12){
+                newFen.victoire = false;
+            }else{
+                newFen.victoire = true;
+            }
         }
     }
     
