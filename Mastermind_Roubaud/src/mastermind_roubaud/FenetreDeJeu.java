@@ -36,7 +36,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
                 caseJetons[j][i] = jetonG;
             }
         }
-        //caseJetons[0][0].setBackground(Color.red);
         
         for(int i=0 ; i<12 ; i++){
             for(int j=0 ; j<4 ; j++){
@@ -412,15 +411,6 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         caseJetons[colonneCourante][nbTours].setBackground(c);
     }
     
-    /*public void miseAjourPanneau(Color c){
-        for(int i=0 ; i<4 ; i++){
-            for(int j=0 ; j<12 ; j++){
-                if(grilleJeu.grille[i][j].couleur != null){
-                    caseJetons[i][j].setBackground(c);
-                }
-            }
-        }
-    }*/
     
     public void verifFinPartie(boolean partieFinie){
         if(nbTours == 11 || partieFinie){
@@ -437,19 +427,18 @@ public class FenetreDeJeu extends javax.swing.JFrame {
     public int[] verifCombin(){
         int compteurRouge = 0; //nombre de jetons biens placés
         int compteurBlanc = 0; //nombre de jetons bons dans la combinaison mais mal placé
-        int [] positionRouge = new int[4];
-        positionRouge[0] = 90;
-        positionRouge[1] = 90;
-        positionRouge[2] = 90;
-        positionRouge[3] = 90;
+        int [] positionBlanc = new int[4]; //rang des jetons déjà comptabilisés comme étant mal placés
+        positionBlanc[0] = 90; //initialisation défaut du tableau
+        positionBlanc[1] = 90;
+        positionBlanc[2] = 90;
+        positionBlanc[3] = 90;
         int [] compteurs = new int[2];
         
         for(int i=0 ; i<4; i++){
             for(int j=0 ; j<4 ; j++){
-                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionRouge[j] != j){
-                    positionRouge[j] = j;
+                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionBlanc[j] != j){
+                    positionBlanc[j] = j;
                     compteurBlanc += 1;
-                    System.out.println("Jeton "+j+" bien pris en compte, boucle "+i);
                     break;
                 }
             }
@@ -458,23 +447,10 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         for(int i=0 ; i<4 ; i++){
             if(grilleJeu.grille[i][nbTours].couleur == IA.Wcombine[i].couleur){
                 compteurRouge ++;
-                positionRouge[i] = i;
-                System.out.println("Jeton "+i+" bien plcé");
             }
         }
         
         compteurBlanc -= compteurRouge;
-        
-        /*for(int i=0 ; i<4 ; i++){
-            for(int j=0 ; j<4 ; j++){
-                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionRouge[j] != j && i!=j && positionRouge[i] != i){
-                    compteurBlanc ++;
-                    positionRouge[j] = j;
-                    System.out.println("Jeton "+j+" bien pris en compte, boucle "+i);
-                    //break;
-                }
-            }
-        }*/
         
         
         compteurs[0] = compteurRouge;
