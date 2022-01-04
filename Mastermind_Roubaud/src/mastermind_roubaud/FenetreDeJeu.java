@@ -454,11 +454,11 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         
         for(int i=0 ; i<4 ; i++){
             for(int j=0 ; j<4 ; j++){
-                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionRouge[j] != j){
+                if(grilleJeu.grille[j][nbTours].couleur == IA.Wcombine[i].couleur && positionRouge[j] != j && i!=j){
                     compteurBlanc ++;
                     positionRouge[j] = j;
                     System.out.println("Jeton "+j+" bien pris en compte, boucle "+i);
-                    break;
+                    //break;
                 }
             }
         }
