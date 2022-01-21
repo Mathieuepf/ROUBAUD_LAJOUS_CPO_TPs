@@ -19,4 +19,11 @@ public class Ordinateur {
             Wcombine[i] = new Jeton(Rand);
         }
     }
+    
+    public void combinaisonFrance(){
+        Wcombine[0] = new Jeton("bleu");
+        Wcombine[1] = new Jeton("blanc");
+        Wcombine[2] = new Jeton("blanc");
+        Wcombine[3] = new Jeton("rouge");
+    }
 }

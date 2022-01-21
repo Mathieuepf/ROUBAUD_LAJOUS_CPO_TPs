@@ -46,7 +46,7 @@ public class FenetreDeJeu extends javax.swing.JFrame {
         }
         
         IA.creerUneCombinaison();
-        
+        //IA.combinaisonFrance();
     }
 
     /**
